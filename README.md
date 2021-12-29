@@ -77,6 +77,7 @@ I've added some items/exercises from my own interests and from jeffz4ng's [essay
 - [ ] [SQL Performance Explained](https://www.amazon.com/Performance-Explained-Everything-Developers-about/dp/3950307826/ref=sr_1_1?keywords=sql+performance+explained&qid=1640781229&sprefix=sql+p%2Caps%2C283&sr=8-1)
 - [ ] [Data and Reality](https://www.amazon.com/Data-Reality-Perspective-Perceiving-Information/dp/1935504215)
 - [ ] U Chicago [ChiDB](http://chi.cs.uchicago.edu/chidb/index.html) Project
+- [ ] [Domain driven design](https://www.amazon.com/dp/0321125215/ref=cm_sw_r_apan_glt_fabc_48CN633V5RWSXQ1SYPRA?_encoding=UTF8&psc=1)
 
 ## Languages and Compilers
 ### Core
