@@ -81,3 +81,4 @@ I will start with the Core listed requirements and do the Extra items during a s
 - [ ] Read Steve Yegge's [Rich Programmer Food](https://steve-yegge.blogspot.com/2007/06/rich-programmer-food.html)
 - [ ] Hefron's [Theory of Interpreters](http://chi.cs.uchicago.edu/index.html#)
 - [ ] Coursera's Programming Languages courses [A](https://www.coursera.org/learn/programming-languages-part-a), [B](https://www.coursera.org/learn/programming-languages-part-b), and [C](https://www.coursera.org/learn/programming-languages-part-c)
+- [ ] Write a toy compiler
