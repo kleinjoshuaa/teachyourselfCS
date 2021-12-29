@@ -65,3 +65,19 @@ I will start with the Core listed requirements and do the Extra items during a s
 - [ ] Implement [UChicago X-Projects](http://chi.cs.uchicago.edu/index.html#) for IRC, TCP, and IP Routing
 
 ## Databases
+### Core
+- [ ] CS 186 [video lectures](https://www.youtube.com/user/CS186Berkeley/videos)
+- [ ] [Architecture of Database Systems](http://db.cs.berkeley.edu/papers/fntdb07-architecture.pdf)
+### Extra
+- [ ] The [Red Book](http://www.redbook.io/)
+- [ ] [SQL Performance Explained](https://www.amazon.com/Performance-Explained-Everything-Developers-about/dp/3950307826/ref=sr_1_1?keywords=sql+performance+explained&qid=1640781229&sprefix=sql+p%2Caps%2C283&sr=8-1)
+- [ ] [Data and Reality](https://www.amazon.com/Data-Reality-Perspective-Perceiving-Information/dp/1935504215)
+- [ ] U Chicago [ChiDB](http://chi.cs.uchicago.edu/chidb/index.html) Project
+
+## Languages and Compilers
+### Core
+- [ ] Read Nystrom's [Crafting Interpreters](https://craftinginterpreters.com/contents.html) and do at least 2 challenges per chapter
+### Extra
+- [ ] Read Steve Yegge's [Rich Programmer Food](https://steve-yegge.blogspot.com/2007/06/rich-programmer-food.html)
+- [ ] Hefron's [Theory of Interpreters](http://chi.cs.uchicago.edu/index.html#)
+- [ ] Coursera's Programming Languages courses [A](https://www.coursera.org/learn/programming-languages-part-a), [B](https://www.coursera.org/learn/programming-languages-part-b), and [C](https://www.coursera.org/learn/programming-languages-part-c)
