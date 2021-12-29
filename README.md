@@ -19,6 +19,7 @@ I will start with the Core listed requirements and do the Extra items during a s
 - [ ] Read Designing Data Intensive Applications
 - [ ] Read the Readings from [MIT 6.824](https://pdos.csail.mit.edu/6.824/schedule.html)
 - [ ] Read the [MIT Distributed System Reading Group Papers](http://dsrg.pdos.csail.mit.edu/papers/)
+- [ ] [Software Architecture The Hard Parts](https://www.amazon.com/gp/product/1492086894/ref=ox_sc_act_image_4?smid=ATVPDKIKX0DER&psc=1)
 ### Extra
 - [ ] Implement the [KV store](https://pdos.csail.mit.edu/6.824/labs/lab-kvraft.html) from MIT 6.824
 
