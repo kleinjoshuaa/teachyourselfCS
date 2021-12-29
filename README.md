@@ -7,10 +7,10 @@ I've had a long career at several software companies but, without a CS degree I 
 
 Teach Yourself CS seems like the proper way to fill the gaps in my knowledge that I may not even know existed.
 
-The order I'm doing this will be a little bit backwards due to my industry experience in distributed system integration.
+The order I'm doing this will be a little bit backwards due to my industry experience in system integration.
 I'm starting with Martin Kleppman's [Designing Data Intensive Applications](https://smile.amazon.com/Designing-Data-Intensive-Applications-Reliable-Maintainable-ebook/dp/B06XPJML5D/)
 
-I plan on primarily reading books and doing the exercises and projects as needed. 
+I plan on primarily reading books and papers, and doing the exercises and projects as needed. 
 
 I will start with the Core listed requirements and do the Extra items during a second iteration of this list. 
 I've added some items/exercises from my own interests and from jeffz4ng's [essay on teachyourselfcs](https://jeffzh4ng.com/essays/thoughts-on-teachyourselfcs.html)
@@ -18,11 +18,12 @@ I've added some items/exercises from my own interests and from jeffz4ng's [essay
 ## Distributed Systems
 ### Core
 - [ ] Read Designing Data Intensive Applications
-- [ ] Read the Readings from [MIT 6.824](https://pdos.csail.mit.edu/6.824/schedule.html)
-- [ ] Read the [MIT Distributed System Reading Group Papers](http://dsrg.pdos.csail.mit.edu/papers/)
 - [ ] [Software Architecture The Hard Parts](https://www.amazon.com/gp/product/1492086894/ref=ox_sc_act_image_4?smid=ATVPDKIKX0DER&psc=1)
 ### Extra
+- [ ] Read the Readings from [MIT 6.824](https://pdos.csail.mit.edu/6.824/schedule.html)
+- [ ] Read the [MIT Distributed System Reading Group Papers](http://dsrg.pdos.csail.mit.edu/papers/)
 - [ ] Implement the [KV store](https://pdos.csail.mit.edu/6.824/labs/lab-kvraft.html) from MIT 6.824
+
 
 ## Programming
  ### Core
