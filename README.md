@@ -12,7 +12,8 @@ I'm starting with Martin Kleppman's [Designing Data Intensive Applications](http
 
 I plan on primarily reading books and doing the exercises and projects as needed. 
 
-I will start with the Core listed requirements and do the Extra items during a second iteration of this list
+I will start with the Core listed requirements and do the Extra items during a second iteration of this list. 
+I've added some items/exercises from my own interests and from jeffz4ng's [essay on teachyourselfcs](https://jeffzh4ng.com/essays/thoughts-on-teachyourselfcs.html)
 
 ## Distributed Systems
 ### Core
@@ -63,6 +64,8 @@ I will start with the Core listed requirements and do the Extra items during a s
 ### Core
 - [ ] Read and do exercises in [Computer Networking: A Top Down Approach](https://smile.amazon.com/Computer-Networking-Top-Down-Approach-7th/dp/0133594149/)
 ### Extra
+- [ ] Beej's [Guide to Network Programming(https://beej.us/guide/bgnet/html/)
+- [ ] U of Washington's [networking lectures](https://www.youtube.com/watch?v=xKNPTYtTnAo&list=PLVEo1P9gAninM7KwP1KKolfMQdNs6P6Am)
 - [ ] Implement [UChicago X-Projects](http://chi.cs.uchicago.edu/index.html#) for IRC, TCP, and IP Routing
 
 ## Databases
