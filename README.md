@@ -13,13 +13,20 @@ I'm starting with Martin Kleppman's [Designing Data Intensive Applications](http
 I plan on primarily reading books and papers, and doing the exercises and projects as needed. 
 
 I will start with the Core listed requirements and do the Extra items during a second iteration of this list. 
-I've added some items/exercises from my own interests and from jeffz4ng's [essay on teachyourselfcs](https://jeffzh4ng.com/essays/thoughts-on-teachyourselfcs.html)
+I've added some items/exercises from my own interests and from @jeffz4ng's [essay on teachyourselfcs](https://jeffzh4ng.com/essays/thoughts-on-teachyourselfcs.html)
+
+Within this repo I will also post my answers to problem sets and other misc code created for this journey. 
+I've had this GitHub account for over a decade. I hope within the next decade to complete all of the items listed.
 
 ## Distributed Systems
 ### Core
-- [ ] Read Designing Data Intensive Applications
+- [x] Read Designing Data Intensive Applications
+ - Absolutely phenominal read. 
+ - I'll want to revisit Chapter 9-12 at some point later. This book is what got me started on this quest to fill in the gaps I missed by not having a CS degree
 - [ ] [Software Architecture The Hard Parts](https://www.amazon.com/gp/product/1492086894/ref=ox_sc_act_image_4?smid=ATVPDKIKX0DER&psc=1)
+ - I added this myself. Still waiting for it to come in the mail
 ### Extra
+- [ ] Revisit Ch. 9-12 of Designing Data Intensive Systems
 - [ ] Read the Readings from [MIT 6.824](https://pdos.csail.mit.edu/6.824/schedule.html)
 - [ ] Read the [MIT Distributed System Reading Group Papers](http://dsrg.pdos.csail.mit.edu/papers/)
 - [ ] Implement the [KV store](https://pdos.csail.mit.edu/6.824/labs/lab-kvraft.html) from MIT 6.824
@@ -28,6 +35,7 @@ I've added some items/exercises from my own interests and from jeffz4ng's [essay
 ## Programming
  ### Core
 - [ ] Read and do the exercises in the first 3 chapters  [Structure and Interpretation of Computer Programming](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book.html)
+  - [Exercises - Chapter 1](SICP_1.md)
  ### Extra
 - [ ] Come back to Finish Chapters 4 and 5 with associated exercises
 
@@ -43,7 +51,8 @@ I've added some items/exercises from my own interests and from jeffz4ng's [essay
 - [ ] Read [How to Solve It](https://smile.amazon.com/How-Solve-Mathematical-Princeton-Science/dp/069116407X/)
 - [ ] Do 100 [Leetcode](https://www.leetcode.com) problems 
 ### Extra
-- [ ] Implement each data structure listed
+- [ ] Do 100 more Leetcode
+- [ ] Implement each data structure listed in chapters 3 and 12 of Skiena.
 
 ## Mathematics for CS
 ### Core
@@ -52,6 +61,7 @@ I've added some items/exercises from my own interests and from jeffz4ng's [essay
 ### Extra
 - [ ] MIT 6.042J [video lectures](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-042j-mathematics-for-computer-science-fall-2010/video-lectures/)
 - [ ] Gilbert Strang's [video lectures](https://ocw.mit.edu/courses/mathematics/18-06-linear-algebra-spring-2010/video-lectures/)
+- [ ] Gilbert Strang's [book](https://www.amazon.com/Introduction-Linear-Algebra-Gilbert-Strang/dp/0980232775/)
 
 ## Operating Systems
 ### Core
@@ -73,18 +83,21 @@ I've added some items/exercises from my own interests and from jeffz4ng's [essay
 ### Core
 - [ ] CS 186 [video lectures](https://www.youtube.com/user/CS186Berkeley/videos)
 - [ ] [Architecture of Database Systems](http://db.cs.berkeley.edu/papers/fntdb07-architecture.pdf)
-### Extra
 - [ ] The [Red Book](http://www.redbook.io/)
+### Extra
 - [ ] [SQL Performance Explained](https://www.amazon.com/Performance-Explained-Everything-Developers-about/dp/3950307826/ref=sr_1_1?keywords=sql+performance+explained&qid=1640781229&sprefix=sql+p%2Caps%2C283&sr=8-1)
 - [ ] [Data and Reality](https://www.amazon.com/Data-Reality-Perspective-Perceiving-Information/dp/1935504215)
 - [ ] U Chicago [ChiDB](http://chi.cs.uchicago.edu/chidb/index.html) Project
-- [ ] [Domain driven design](https://www.amazon.com/dp/0321125215/ref=cm_sw_r_apan_glt_fabc_48CN633V5RWSXQ1SYPRA?_encoding=UTF8&psc=1)
 
 ## Languages and Compilers
 ### Core
 - [ ] Read Nystrom's [Crafting Interpreters](https://craftinginterpreters.com/contents.html) and do at least 2 challenges per chapter
 ### Extra
 - [ ] Read Steve Yegge's [Rich Programmer Food](https://steve-yegge.blogspot.com/2007/06/rich-programmer-food.html)
-- [ ] Hefron's [Theory of Interpreters](http://chi.cs.uchicago.edu/index.html#)
+- [ ] Hefron's [Theory of Computation](https://hefferon.net/computation/index.html)
 - [ ] Coursera's Programming Languages courses [A](https://www.coursera.org/learn/programming-languages-part-a), [B](https://www.coursera.org/learn/programming-languages-part-b), and [C](https://www.coursera.org/learn/programming-languages-part-c)
 - [ ] Write a toy compiler
+
+
+## Elective: Software Engineering
+- [ ] Osterhaut's [A Philosophy of Software Design](https://www.amazon.com/Philosophy-Software-Design-2nd/dp/173210221X/ref=monarch_sidesheet)
