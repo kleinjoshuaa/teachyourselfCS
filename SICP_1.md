@@ -76,9 +76,9 @@ Here we first do one level of replacement of the variables x and y with 0 and (p
 ````scheme
   (if (= 0 0)
       0
-      (p)))
+      (p))
 ````
-0 = 0, so in this case we return zero without evaluating (p).
+0 = 0, so in this case we return zero without evaluating (p). In normal order we evaluate first and then substitute when needed.
 ````scheme
   0
 ````
@@ -90,6 +90,84 @@ Here we first do one level of replacement of the variables x and y with 0 and (p
 ````scheme
   (if (= 0 0)
       0
-      (p)))
+      (p))
 ````
 Then we try to replace (p) with (p) with (p) but it keeps going in an infinite loop because we cannot fully replace all variables.
+
+
+1.6
+- The predicate expression is evaluated first, and the result determines whether to evaluate the consequent or the alternative expression during the evaluation of a normal `if` statement. Because lisp uses applicative order evaluation it will try to evaluate all of the arguments to the `cond` function, which, since it is calling itself recursively, will keep the function in an infinite loop.
+
+1.7
+> Question: The `good-enough?` test used in computing square roots will not be very effective for finding the square roots of very small numbers. Also, in real computers, arithmetic operations are almost always performed with limited precision. This makes our test inadequate for very large numbers. Explain these statements, with examples showing how the test fails for small and large numbers
+
+Our good-enough function is as follows:
+````scheme
+(define (good-enough? guess x)
+  (< (abs (- (square guess) x)) 0.001))
+````
+For very small numbers this test will perform poorly because any number less than zero, when squared, will actually be smaller than itself. 
+For example:
+````scheme
+(good-enough? 0.0033 .0001)
+````
+returns true and as numbers get smaller and smaller the distance between them using this `good-enough?` function becomes kind of nonsensical. 
+
+For very large numbers, we can see this example here:
+````scheme
+(good-enough? 1000000000 1000000000)
+````
+Returns false despite the fact that the numbers are identical. The good enough function we are using doesn't really handle how much bigger numbers become when squared. Of course, we could talk about bit representations of numbers in binary but the book hasn't gotten to that point yet.
+
+>  An alternative strategy for implementing good-enough? is to watch how guess changes from one iteration to the next and to stop when the change is a very small fraction of the guess. Design a square-root procedure that uses this kind of end test.
+
+Here we can use the below procedures instead
+````scheme
+(define (average x y)
+  (/ (+ x y) 2))
+
+(define (good-enough? guess lastguess)
+  (< (abs (/ (- lastguess guess) guess)) 0.001))
+
+(define (improve guess x)
+  (average guess (/ x guess)))
+
+(define (sqrt-iter guess lastguess x)
+  (if (good-enough? guess lastguess)
+      guess
+      (sqrt-iter (improve guess x)
+                 guess
+                 x)))
+
+(define (sqrt x)
+  (sqrt-iter 1.0 0 x))
+````
+We can alter the `good-enough?` function to make the difference as small as we want to improve accuracy, barring the limits of  numerical representation in mit-scheme.
+In any case, removing the squaring function helps, for example, now
+````scheme
+(good-enough? 1000000000 1000000000)
+````
+returns true
+
+1.8
+> Implement Newton's Cube Root
+````scheme
+(define (average x y)
+  (/ (+ x y) 2))
+
+(define (good-enough? guess lastguess)
+  (< (abs (/ (- lastguess guess) guess)) 0.000001))
+
+(define (improve guess x)
+  (/ (+ (/ x (square guess)) (* 2 guess)) 3))
+
+(define (cbrt-iter guess x)
+  (if (good-enough? guess (improve guess x))
+      guess
+      (cbrt-iter (improve guess x)
+                      x)))
+
+(define (cbrt x)
+  (cbrt-iter 1.0 x))
+````
+
