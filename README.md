@@ -100,4 +100,5 @@ I've had this GitHub account for over a decade. I hope within the next decade to
 
 
 ## Elective: Software Engineering
+- [ ] Eric Evans' [Domain Driven Design](https://www.amazon.com/Domain-Driven-Design-Tackling-Complexity-Software/dp/0321125215)
 - [ ] Osterhaut's [A Philosophy of Software Design](https://www.amazon.com/Philosophy-Software-Design-2nd/dp/173210221X/ref=monarch_sidesheet)
