@@ -152,6 +152,8 @@ returns true
 1.8
 > Implement Newton's Cube Root
 ````scheme
+(define (square x)
+  (* x x))
 
 (define (good-enough? guess lastguess)
   (< (abs (/ (- lastguess guess) guess)) 0.000001))
