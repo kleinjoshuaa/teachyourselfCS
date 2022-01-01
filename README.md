@@ -24,7 +24,7 @@ I've had this GitHub account for over a decade. I hope within the next decade to
  - Absolutely phenomenal read. 
  - I'll want to revisit Chapter 9-12 at some point later. This book is what got me started on this quest to fill in the gaps I missed by not having a CS degree
 - [ ] [Software Architecture The Hard Parts](https://www.amazon.com/gp/product/1492086894/ref=ox_sc_act_image_4?smid=ATVPDKIKX0DER&psc=1)
- - I added this myself. Still waiting for it to come in the mail
+ - I added this myself. Top selling book on Amazon. Still waiting for it to come in the mail
 ### Extra
 - [ ] Revisit Ch. 9-12 of Designing Data Intensive Systems
 - [ ] Read the Readings from [MIT 6.824](https://pdos.csail.mit.edu/6.824/schedule.html)
