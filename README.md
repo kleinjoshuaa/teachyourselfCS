@@ -84,6 +84,7 @@ I've had this GitHub account for over a decade. I hope within the next decade to
 - [ ] CS 186 [video lectures](https://www.youtube.com/user/CS186Berkeley/videos)
 - [ ] [Architecture of Database Systems](http://db.cs.berkeley.edu/papers/fntdb07-architecture.pdf)
 - [ ] The [Red Book](http://www.redbook.io/)
+- [ ] [Database Internals](https://www.amazon.com/Database-Internals-Deep-Distributed-Systems/dp/1492040347)
 ### Extra
 - [ ] [SQL Performance Explained](https://www.amazon.com/Performance-Explained-Everything-Developers-about/dp/3950307826/ref=sr_1_1?keywords=sql+performance+explained&qid=1640781229&sprefix=sql+p%2Caps%2C283&sr=8-1)
 - [ ] [Data and Reality](https://www.amazon.com/Data-Reality-Perspective-Perceiving-Information/dp/1935504215)
