@@ -171,3 +171,65 @@ returns true
   (cbrt-iter 1.0 x))
 ````
 
+1.9
+-- evaluate `(+ 4 5)` using the substitution model 
+````scheme
+(define (+ a b)
+  (if (= a 0)
+      b
+      (inc (+ (dec a) b))))
+````
+Expansion/resolution of `(+4 5)`
+````scheme
+(+ 4 5)
+(inc (+ 3 5))
+(inc (inc (+ 2 5)))
+(inc (inc (inc (+ 1 5))))
+(inc (inc (inc (inc (+ 0 5)))))
+````
+Resolution
+````scheme
+(inc (inc (inc (inc (+ 0 5)))))
+(inc (inc (inc (inc 5))))
+(inc (inc (inc 6)))
+(inc (inc 7))
+(inc 8)
+9
+````
+This is recursive.
+
+Now let's evaluate `(+ 4 5)`
+````scheme
+(define (+ a b)
+  (if (= a 0)
+      b
+      (+ (dec a) (inc b))))
+````
+````scheme
+(+ 4 5)
+(+ (+ 3 6))
+(+ (+ (+ 2 7)))
+(+ (+ (+ (+ 1 8))))
+(+ (+ (+ (+ (+ 0 9)))))
+````
+Resolution:
+````scheme
+(+ (+ (+ (+ (+ 0 9)))))
+9
+````
+This is iterative.
+
+
+1.10
+````scheme
+(A 1 10)
+; Result: 1024
+(A 2 4)
+; Result: 65536
+(A 3 3)
+; Result: 65536
+````
+
+- f = 2n
+- g = 2^n
+- h = 2^^n (in other words, 2^2^...^2 n times) I found this particularly frustrating because to me this doesn't seem like a concise mathematical definition that was asked for. 
