@@ -1,6 +1,6 @@
 # Exercises from SICP Chapter 1
 
-1.1
+## 1.1
   - 10
   - 11
   - 8
@@ -15,13 +15,13 @@
   - ~~9~~ (incorrect) actually 6 (got this incorrect from misreading)
   - 16
   
-1.2
+## 1.2
 
 ````scheme
 (/ (+ 5 4 (- 2 (- 3 (+ 6 (/ 4 5))))) (* 3 (- 6 2) (- 2 7)))
 ````
 
-1.3
+## 1.3
 ````scheme
 ; define a procedure to find the sum of the squares of the 2 largest of 3 numerical input parameters
 (define (square x) (* x x))
@@ -44,14 +44,14 @@
 (define (ss2l x y z) (+ (square (biggest x y z)) (square (middle x y z))))
 ````
 
-1.4
+## 1.4
 ````scheme
 (define (a-plus-abs-b a b)
   ((if (> b 0) + -) a b))
 ````
 If b is greater than zero, the above procedure would add a and b. If b was less than zero, it would subtract b from a.
 
-1.5
+## 1.5
 
 
 Question: Ben Bitdiddle has invented a test to determine whether the interpreter he is faced with is using applicative-order evaluation or normal-order evaluation. He defines the following two procedures:
@@ -95,10 +95,10 @@ Here we first do one level of replacement of the variables x and y with 0 and (p
 Then we try to replace (p) with (p) with (p) but it keeps going in an infinite loop because we cannot fully replace all variables.
 
 
-1.6
-- The predicate expression is evaluated first, and the result determines whether to evaluate the consequent or the alternative expression during the evaluation of a normal `if` statement. Because lisp uses applicative order evaluation it will try to evaluate all of the arguments to the `cond` function, which, since it is calling itself recursively, will keep the function in an infinite loop.
+## 1.6
+The predicate expression is evaluated first, and the result determines whether to evaluate the consequent or the alternative expression during the evaluation of a normal `if` statement. Because lisp uses applicative order evaluation it will try to evaluate all of the arguments to the `cond` function, which, since it is calling itself recursively, will keep the function in an infinite loop.
 
-1.7
+## 1.7
 > Question: The `good-enough?` test used in computing square roots will not be very effective for finding the square roots of very small numbers. Also, in real computers, arithmetic operations are almost always performed with limited precision. This makes our test inadequate for very large numbers. Explain these statements, with examples showing how the test fails for small and large numbers
 
 Our good-enough function is as follows:
@@ -149,7 +149,7 @@ In any case, removing the squaring function helps, for example, now
 ````
 returns true
 
-1.8
+## 1.8
 > Implement Newton's Cube Root
 ````scheme
 (define (square x)
@@ -171,8 +171,8 @@ returns true
   (cbrt-iter 1.0 x))
 ````
 
-1.9
--- evaluate `(+ 4 5)` using the substitution model 
+## 1.9
+> evaluate `(+ 4 5)` using the substitution model 
 ````scheme
 (define (+ a b)
   (if (= a 0)
@@ -207,20 +207,16 @@ Now let's evaluate `(+ 4 5)`
 ````
 ````scheme
 (+ 4 5)
-(+ (+ 3 6))
-(+ (+ (+ 2 7)))
-(+ (+ (+ (+ 1 8))))
-(+ (+ (+ (+ (+ 0 9)))))
-````
-Resolution:
-````scheme
-(+ (+ (+ (+ (+ 0 9)))))
+(+ 3 6)
+(+ 2 7)
+(+ 1 8)
+(+ 0 9)
 9
 ````
 This is iterative.
 
 
-1.10
+## 1.10
 ````scheme
 (A 1 10)
 ; Result: 1024
@@ -233,3 +229,44 @@ This is iterative.
 - f = 2n
 - g = 2^n
 - h = 2^^n (in other words, 2^2^...^2 n times) I found this particularly frustrating because to me this doesn't seem like a concise mathematical definition that was asked for. 
+
+## 1.11
+````scheme
+; recursive method
+(define (fib n)
+  (cond ((= n 0) 0)
+        ((= n 1) 1)
+        ((= n 2) 2)
+        (else (+ (fib (- n 1))
+                 (* 2 (fib (- n 2)))
+                 (* 3 (fib (- n 3)))))))
+                 
+; iterative
+(define (fib n)
+  (fib-iter 2 1 0 n))
+
+(define (fib-iter a b c count)
+  (if (= count 0)
+      c
+      (fib-iter (+ a (* 2 b) (* 3 c)) a b (- count 1))))
+````
+
+## 1.12
+````scheme
+; recursive pascal's triangle
+(define (pascal row element)
+  (cond ((= row 1) 1)
+        ((= row 2) 1)
+        ((= element 1) 1)
+        ((= element row) 1)
+        (else (+ (pascal (- row 1) element)
+                 (pascal (- row 1) (- element 1))))))
+````
+
+1.13
+
+>Prove that Fib(n) is the closest integer to (&phi;^n )/&#8730;5, where &phi; = (1 + &#8730;5)/2
+Hint: Let 	&psi; = (1 - &#8730;5)/2
+Use induction and the definition of the Fibonacci numbers to prove that Fib(n) = (&phi;^n - &psi;^n)/&#8730;5.
+
+- I solved this with some help on induction proofs. I also used Latex for this 
