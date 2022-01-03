@@ -270,3 +270,4 @@ Hint: Let 	&psi; = (1 - &#8730;5)/2
 Use induction and the definition of the Fibonacci numbers to prove that Fib(n) = (&phi;^n - &psi;^n)/&#8730;5.
 
 - I solved this with some help on induction proofs. I also used Latex for this 
+- [Solution](113.tex)
