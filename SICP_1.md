@@ -263,7 +263,7 @@ This is iterative.
                  (pascal (- row 1) (- element 1))))))
 ````
 
-1.13
+## 1.13
 
 >Prove that Fib(n) is the closest integer to (&phi;^n )/&#8730;5, where &phi; = (1 + &#8730;5)/2
 Hint: Let 	&psi; = (1 - &#8730;5)/2
@@ -271,3 +271,55 @@ Use induction and the definition of the Fibonacci numbers to prove that Fib(n) =
 
 - I solved this with some help on induction proofs. I also used Latex for this 
 - [Solution](113.tex)
+
+## 1.14
+Tree diagram is [here](114.svg)
+> What are the orders of growth of the space and number of steps used by this process as the amount to be changed increases?
+As far as 'height' (number of steps / space) this will always be the number of cents, as the max height tree will be the one that subtracts individual pennies from the amount. 
+
+As far as time complexity -  each new cent has to be evaluated against all 5 demonimations. Roughly this will mean a O(n^5) complexity 
+
+## 1.15
+ a. 6 (essentially this is 12.15/(3^(x-1)) < 0.1  )
+ b.The complexity grows at 1/x, or logorithmic time. The number of steps increments at each whole complete power of 3 contained in the argument to the function
+
+## 1.16
+````scheme
+(define (even? n)
+  (= (remainder n 2) 0))
+
+(define (fast-expt a b n)
+  (cond ((= n 1) a)
+        ((even? n) (fast-expt (* a (* b b)) b (/ n 2)))
+        (else (fast-expt (* a b) b (- n 1)))))
+
+(define (expt a n)
+  (fast-expt 1 a n)) 
+````
+## 1.17
+````scheme
+(define (even? n)
+  (= (remainder n 2) 0))
+
+(define (double a) (+ a a))
+(define (halve a) (/ a 2)) 
+  
+  (define (rmul a b)
+  (cond ((= b 0) 0)
+        ((= b 1) a)
+        (( even? b) (rmul (double a) (halve b)))
+        (else (+ a (rmul a (- b 1))))))
+````
+
+## 1.18
+Basically 1.17, but iterative
+````scheme
+(define (rpm a b sum)
+  (cond ((= 0 a)  sum)
+        ((even? a) (rpm (halve a) (double b) sum))
+        (else (rpm (halve (- a 1)) (double b) (+ sum b)))))
+
+(define (mul a b) (rpm a b 0))
+````
+
+## 1.19
