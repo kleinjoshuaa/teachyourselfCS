@@ -93,7 +93,7 @@ I've had this GitHub account for over a decade. I hope within the next decade to
 ### Core
 - [ ] Read Nystrom's [Crafting Interpreters](https://craftinginterpreters.com/contents.html) and do at least 2 challenges per chapter
 ### Extra
-- [ ] Read Steve Yegge's [Rich Programmer Food](https://steve-yegge.blogspot.com/2007/06/rich-programmer-food.html)
+- [x] Read Steve Yegge's [Rich Programmer Food](https://steve-yegge.blogspot.com/2007/06/rich-programmer-food.html)
 - [ ] Hefron's [Theory of Computation](https://hefferon.net/computation/index.html)
 - [ ] Coursera's Programming Languages courses [A](https://www.coursera.org/learn/programming-languages-part-a), [B](https://www.coursera.org/learn/programming-languages-part-b), and [C](https://www.coursera.org/learn/programming-languages-part-c)
 - [ ] Write a toy compiler
@@ -102,5 +102,6 @@ I've had this GitHub account for over a decade. I hope within the next decade to
 ## Elective: Software Engineering
 - [ ] Eric Evans' [Domain Driven Design](https://www.amazon.com/Domain-Driven-Design-Tackling-Complexity-Software/dp/0321125215)
 - This seems to be a very popular among people whose opinion's I respect. So it seems worthwhile to dive into this one
-- [ ] Osterhaut's [A Philosophy of Software Design](https://www.amazon.com/Philosophy-Software-Design-2nd/dp/173210221X/ref=monarch_sidesheet)
-- This one was reccomended by one of the founders of teachyourselfcs
+- [x] Osterhaut's [A Philosophy of Software Design](https://www.amazon.com/Philosophy-Software-Design-2nd/dp/173210221X/ref=monarch_sidesheet)
+ - This one was reccomended by one of the founders of teachyourselfcs
+ - Really fantastic book. Not too long either. 
