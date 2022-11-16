@@ -341,9 +341,14 @@ Basically 1.17, but iterative
                         (- count 1)))))
 ````
 ## 1.20
-````scheme
-199, 1999, 7
-````
+Using the substitution method (for normal order), illustrate the process generated in evaluating (gcd 206 40) and indicate the remainder operations that are actually performed. 
+
+How many remainder operations are actually performed in the normal-order evaluation of (gcd 206 40)? 
+```
+```
+In the applicative-order evaluation?
+```
+```
 
 ## 1.21
 ````scheme
