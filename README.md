@@ -28,6 +28,7 @@ I've had this GitHub account for over a decade. I hope within the next decade to
 - [ ] Revisit Ch. 9-12 of Designing Data Intensive Systems
 - [ ] Read the Readings from [MIT 6.824](https://pdos.csail.mit.edu/6.824/schedule.html)
 - [ ] Read the [MIT Distributed System Reading Group Papers](http://dsrg.pdos.csail.mit.edu/papers/)
+- [ ] Read [conflict free CRDTs](https://jzhao.xyz/posts/bft-json-crdt/)
 - [ ] Implement the [KV store](https://pdos.csail.mit.edu/6.824/labs/lab-kvraft.html) from MIT 6.824
 
 
