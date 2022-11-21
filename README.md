@@ -104,3 +104,6 @@ I've had this GitHub account for over a decade. I hope within the next decade to
 - [x] Osterhaut's [A Philosophy of Software Design](https://www.amazon.com/Philosophy-Software-Design-2nd/dp/173210221X/ref=monarch_sidesheet)
  - This one was reccomended by one of the founders of teachyourselfcs
  - Really fantastic book. Not too long either. 
+ 
+ - [ ] Electricity and Magnetism - [MIT OCW 802](https://ocw.mit.edu/courses/8-02-physics-ii-electricity-and-magnetism-spring-2007/pages/syllabus/) 
+  - I skipped out on the E&M course in college. I regret that. 
