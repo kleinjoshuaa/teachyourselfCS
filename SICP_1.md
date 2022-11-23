@@ -345,9 +345,31 @@ Using the substitution method (for normal order), illustrate the process generat
 
 How many remainder operations are actually performed in the normal-order evaluation of (gcd 206 40)? 
 ```
+(define (gcd a b)
+  (if (= b 0)
+      a
+      (gcd b (remainder a b))))
+
+(gcd 206 40)
+(gcd 40 (remainder 206 40))
+(gcd (remainder 206 40) (remainder (remainder 206 40))
+
 ```
 In the applicative-order evaluation?
 ```
+(define (gcd a b)
+  (if (= b 0)
+      a
+      (gcd b (remainder a b))))
+      
+(gcd 206 40)
+(gcd 40 (remainder 206 40))
+(gcd 6 (remainder 40 6))
+(gcd 4 (remainder 6 4))
+(gcd 2 (remainder 4 2))
+
+== 2
+
 ```
 
 ## 1.21
