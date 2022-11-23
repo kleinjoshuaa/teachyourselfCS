@@ -370,6 +370,8 @@ In the applicative-order evaluation?
 
 == 2
 
+remainder is called 4 times
+
 ```
 
 ## 1.21
