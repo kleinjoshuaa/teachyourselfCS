@@ -49,7 +49,7 @@ I've had this GitHub account for over a decade. I hope within the next decade to
 ### Core
 - [ ] Read Skiena's [Algorithm Design Manual](https://smile.amazon.com/Algorithm-Design-Manual-Steven-Skiena/dp/1848000693/)
 - [x] Read [How to Solve It](https://smile.amazon.com/How-Solve-Mathematical-Princeton-Science/dp/069116407X/)
-  - Polya is absolutely brilliant. I liked this one a lot too. Seems like he 
+  - Polya is absolutely brilliant. I liked this one a lot too. 
 - [ ] Do 100 [Leetcode](https://www.leetcode.com) problems 
 ### Extra
 - [ ] Do 100 more Leetcode
