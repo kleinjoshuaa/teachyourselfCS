@@ -344,19 +344,42 @@ Basically 1.17, but iterative
 Using the substitution method (for normal order), illustrate the process generated in evaluating (gcd 206 40) and indicate the remainder operations that are actually performed. 
 
 How many remainder operations are actually performed in the normal-order evaluation of (gcd 206 40)? 
-```
+```scheme
 (define (gcd a b)
   (if (= b 0)
       a
       (gcd b (remainder a b))))
 
 (gcd 206 40)
+;40 ==0? no
 (gcd 40 (remainder 206 40))
-(gcd (remainder 206 40) (remainder (remainder 206 40))
+;if(b == 0?) -> b is then evaluated to detemrine if we need to do an additional step
+; so in this case
+
+(remainder 206 40)
+; 6 == 0? no
+
+
+(gcd (remainder 206 40) (remainder 40 (remainder 206 40)))
+(remainder 40 (remainder 206 40))
+; 4 ==0? no
+
+
+(gcd (remainder 40 (remainder 206 40)) (remainder (remainder 206 40) (remainder 40 (remainder 206 40))))
+(remainder (remainder 206 40) (remainder 40 (remainder 206 40)))
+; 2 == 0? no
+
+(gcd (remainder (remainder 206 40) (remainder 40 (remainder 206 40))) (remainder (remainder 40 (remainder 206 40)) (remainder (remainder 206 40) (remainder 40 (remainder 206 40)))))
+(remainder (remainder 40 (remainder 206 40)) (remainder (remainder 206 40) (remainder 40 (remainder 206 40))))
+; 0 == 0 yes!
+
+
+;==2 is the GCD
+
 
 ```
 In the applicative-order evaluation?
-```
+```scheme
 (define (gcd a b)
   (if (= b 0)
       a
@@ -368,9 +391,9 @@ In the applicative-order evaluation?
 (gcd 4 (remainder 6 4))
 (gcd 2 (remainder 4 2))
 
-== 2
+;== 2
 
-remainder is called 4 times
+;remainder is called 4 times
 
 ```
 
