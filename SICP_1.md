@@ -401,3 +401,150 @@ In the applicative-order evaluation?
 ````scheme
 199, 1999, 7
 ````
+
+
+## 1.22
+````scheme
+ (define (display-error n error)
+   (display n)
+   (display error)
+   )
+
+(define (evaluate-next-prime start end)
+  (timed-prime-test start)
+  (search-for-primes (inc (inc start)) end)
+  )
+
+(define (search-for-primes start end)
+  (if (= (remainder start 2) 0)
+      ( display-error start " is not odd" )
+      (if (<= start end)
+          (evaluate-next-prime start end)      
+          )
+  )
+  )
+````
+
+### smallest primes > 1000
+````
+1009 *** 3
+1011
+1013 *** 2
+1015
+1017
+1019 *** 2
+````
+Average = 2.333
+
+### smallest primes > 10000
+````
+10007 *** 5
+10009 *** 5
+....
+10037 *** 5
+````
+Average = 5
+
+### smallest primes > 100000
+````
+100003 *** 16
+...
+100019 *** 14
+...
+100043 *** 22
+````
+Average = 17.33
+
+### smallest primes > 1000000
+````
+1000001
+1000003 *** 42
+...
+1000033 *** 40
+1000035
+1000037 *** 44
+````
+Average = 42
+
+
+Since the testing algorithm has order of growth of theta (sqrt (n)), you should expect that testing for primes around 10,000 should take about (sqrt 10) times as long as testing for primes around 1000
+How well do the data for 100,000 and 1,000,000 support the (sqrt n) prediction? Is your result compatible with the notion that programs on your machine run in time proportional to the number of steps required for the computation?
+
+sqrt 10 = 3.16 (approx)
+
+1000 -> 10000
+5/2.33 = 2.14
+
+10000 -> 100000
+17.33/5 = 3.46
+
+100000 -> 1000000
+42/17.33 = 2.42
+
+They are definitely getting closer - it's almost like a converging sequence. The smaller numbers probably have more overhead so you don't see as much of the pure algorithm time math being dominant. 
+
+Out of curiosity, 10,000,000 has an average of 124.66 sec to find the 3 smallest primes, and 124.66/42 = 2.96
+
+## 1.23
+
+````scheme
+(define (next n)
+  (if (= 2 n)
+      3
+      (+ n 2)
+  ))
+
+
+(define (smallest-divisor n)
+  (find-divisor n 2))
+(define (find-divisor n test-divisor)
+  (cond ((> (square test-divisor) n) n)
+        ((divides? test-divisor n) test-divisor)
+        (else (find-divisor n (next test-divisor)))))
+(define (divides? a b)
+  (= (remainder b a) 0))
+````
+With the updated `next` function
+
+Average time for 3 smallest primes > 1000 -> 1.67 / 2.33 = 0.71 times the amount of time as the old algorithm
+for primes > 10000 -> 4 / 5 = 0.8 
+for primes > 100000 -> 8.67 / 17.33 = 0.500
+for primes > 1000000 -> 36 / 42 = 0.85
+
+It's pretty close in some cases - still I think these numbers are probably too small for modern CPUs. Benchmarking is an imperfect science. 
+
+## 1.24
+Since the fermat test has O(log n) time complexity, it should take log (1000000/1000) or 3x the amount of time to find primes by 1000000 as opposed to 1000. 
+
+````scheme
+(define (fermat-test n)
+  (define (try-it a)
+    (= (expmod a n n) a))
+  (try-it (+ 1 (random (- n 1)))))
+
+(define (timed-prime-test n)
+  (newline)
+  (display n)
+  (start-prime-test n (runtime)))
+(define (start-prime-test n start-time)
+  (if (fast-prime? n 1000)
+      (report-prime (- (runtime) start-time))))
+(define (report-prime elapsed-time)
+  (display " *** ")
+  (display elapsed-time))
+````
+Copied the code from the book above and just do the fermat test 10 times. 
+Finding primes near 1000 -> 10.33
+Finding primes near 1000000 -> 20.00
+It seems like it's closer to 2x not 3x. 
+
+# 1.25
+Alyssa P. Hacker complains that we went to a lot of extra work in writing expmod. After all, she says, since we already know how to compute exponentials, we could have simply written
+
+````scheme
+(define (expmod base exp m)
+  (remainder (fast-expt base exp) m))
+````
+Is she correct? Would this procedure serve as well for our fast prime tester? Explain.
+
+
