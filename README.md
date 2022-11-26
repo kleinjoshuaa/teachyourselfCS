@@ -26,6 +26,7 @@ I've had this GitHub account for over a decade. I hope within the next decade to
 
 ### Extra
 - [ ] Revisit Ch. 9-12 of Designing Data Intensive Systems
+- [ ] Van Steen's [book on distributed systems](https://www.amazon.com/gp/product/1543057381/ref=ox_sc_act_title_1?smid=ATVPDKIKX0DER&psc=1)
 - [ ] Read the Readings from [MIT 6.824](https://pdos.csail.mit.edu/6.824/schedule.html)
 - [ ] Read the [MIT Distributed System Reading Group Papers](http://dsrg.pdos.csail.mit.edu/papers/)
 - [ ] Read [conflict free CRDTs](https://jzhao.xyz/posts/bft-json-crdt/)
@@ -77,6 +78,7 @@ I've had this GitHub account for over a decade. I hope within the next decade to
 - [ ] Read and do exercises in [Computer Networking: A Top Down Approach](https://smile.amazon.com/Computer-Networking-Top-Down-Approach-7th/dp/0133594149/)
 ### Extra
 - [ ] Beej's [Guide to Network Programming](https://beej.us/guide/bgnet/html/)
+- [ ] [Wireshark Labs](https://gaia.cs.umass.edu/kurose_ross/wireshark.php)
 - [ ] U of Washington's [networking lectures](https://www.youtube.com/watch?v=xKNPTYtTnAo&list=PLVEo1P9gAninM7KwP1KKolfMQdNs6P6Am)
 - [ ] Implement [UChicago X-Projects](http://chi.cs.uchicago.edu/index.html#) for IRC, TCP, and IP Routing
 
