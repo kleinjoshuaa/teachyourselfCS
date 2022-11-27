@@ -42,7 +42,7 @@ I've had this GitHub account for over a decade. I hope within the next decade to
 
 ## Computer Architecture
 ### Core
-- [ ] Read and do the exercises in the first 6 Chapters of [Computer Systems: A Programmer's Perspective](http://csapp.cs.cmu.edu/3e/home.html)
+- [ ] Read and do the practice problems in the first 6 Chapters of [Computer Systems: A Programmer's Perspective](http://csapp.cs.cmu.edu/3e/home.html)
 ### Extra
 - [ ] Read Chapters 7-12 and do the exercises 
 
