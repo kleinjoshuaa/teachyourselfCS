@@ -62,7 +62,7 @@ I've had this GitHub account for over a decade. I hope within the next decade to
 - [ ] Essense of Linear Algebra [video series](https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab)
 ### Extra
 - [ ] MIT 6.042J [video lectures](https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-042j-mathematics-for-computer-science-fall-2010/video-lectures/)
-- [ ] Gilbert Strang's [video lectures](https://ocw.mit.edu/courses/mathematics/18-06-linear-algebra-spring-2010/video-lectures/)
+- [ ] Gilbert Strang's [MIT OCW lectures](https://ocw.mit.edu/courses/18-06sc-linear-algebra-fall-2011/pages/ax-b-and-the-four-subspaces/the-geometry-of-linear-equations/)
 - [ ] Gilbert Strang's [book](https://www.amazon.com/Introduction-Linear-Algebra-Gilbert-Strang/dp/0980232775/)
 
 ## Operating Systems
