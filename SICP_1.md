@@ -538,7 +538,7 @@ Finding primes near 1000 -> 10.33
 Finding primes near 1000000 -> 20.00
 It seems like it's closer to 2x not 3x. 
 
-# 1.25
+## 1.25
 Alyssa P. Hacker complains that we went to a lot of extra work in writing expmod. After all, she says, since we already know how to compute exponentials, we could have simply written
 
 ````scheme
@@ -548,3 +548,208 @@ Alyssa P. Hacker complains that we went to a lot of extra work in writing expmod
 Is she correct? Would this procedure serve as well for our fast prime tester? Explain.
 
 
+It does appear to work but the function is significantly slower. This new expmod function averages 377 seconds for computing primes around 1000, which means it would not serve well for our prime tester. It calls the remainder function at the end, meaning it has to compute the remainder of the final computed exponental number. The `expmod` function we were using before returns the remainder with each recursion, which reduces the size of the number being evaluated. ([barry allison's SICP answers](https://wizardbook.wordpress.com/2010/11/29/exercise-1-25/) say this is x^n growth in time complexity vs the existing (n) growth of our given expmod function. I intuitively think his is probably correct)
+
+## 1.26
+
+````scheme
+(define (expmod base exp m)
+  (cond ((= exp 0) 1)
+        ((even? exp)
+         (remainder (* (expmod base (/ exp 2) m)
+                       (expmod base (/ exp 2) m))
+                    m))
+        (else
+         (remainder (* base (expmod base (- exp 1) m))
+                    m))))
+````
+
+By writing the procedure like that, you have transformed the (log n) process into a (n) process. Explain.
+
+So instead of squaring the single `expmod` argument, the computer now has to evaluate both `expmod` branches. It cannot rely on the fact that `expmod (expmod base (/ exp 2)` will return the same value with both successive calls. You lose that advantage. Instead of the number of steps growing (log n) it grows log n * log n, or log2^2 n, which is n. (I think)
+
+
+## 1.27
+Carmichael Numbers:
+561, 1105, 1729, 2465, 2821, 6601
+
+Using our existing `fermat-test` function they do seem to return true
+````scheme
+> (fermat-test 561)
+#t
+> (fermat-test 1105)
+#t
+> (fermat-test 1729)
+#t
+> (fermat-test 2465)
+#t
+> (fermat-test 2821)
+#t
+> (fermat-test 6601)
+#t
+````
+Now let's write a procedure that takes an integer n and tests whether an is congruent to a modulo n for every a<n, and try your procedure on the given Carmichael numbers.
+
+````scheme
+(define (fermat-test-explicit n a)
+    (= (expmod a n n) a))
+
+(define (display-result n)
+  (display " completed fermat tests for ") (display n)
+  )
+
+(define (carmichael-test n ctr)
+  (if (not (fermat-test-explicit n ctr))
+      ((display n) (display " appears to not pass the fermat test with a = ") (display ctr))
+      (if (> ctr 0)
+          (carmichael-test n (dec ctr))
+          (display-result n)
+      )
+      )
+  )
+  
+ (define (full-carmichael-test n)
+   (carmichael-test n (dec n)))
+      
+  
+````
+and results
+````
+> (full-carmichael-test 561)
+ completed fermat tests for 561
+> (full-carmichael-test 1105)
+ completed fermat tests for 1105
+> (full-carmichael-test 1729)
+ completed fermat tests for 1729
+> (full-carmichael-test 2465)
+ completed fermat tests for 2465
+> (full-carmichael-test 2821)
+ completed fermat tests for 2821
+> (full-carmichael-test 6601)
+ completed fermat tests for 6601
+````
+
+It seems they all do pass
+
+## 1.28
+
+Implement the miller-rabin sq root test
+
+````scheme
+(define (timed-prime-test-mr n)
+  (newline)
+  (display n)
+  (start-prime-test-mr n (runtime)))
+(define (start-prime-test-mr n start-time)
+  (if (miller-rabin n 10)
+      (report-prime (- (runtime) start-time))))
+
+
+(define (miller-rabin n a)
+  (define (try-it a)
+    (= (expmod-miller a (- n 1) n) a))
+  (try-it (+ 1 (random (- n 1)))))
+
+(define (is-nontrivial-root m n)
+  (cond ((and (not (= m 1)) (not (= m (- n 1))))
+            (= (remainder (square m) n) 1 ))
+        (else false)
+       )
+  )
+        
+  
+
+(define (expmod-miller base exp m)
+  (cond ((= exp 0) 1)
+        ((even? exp)
+         (if (is-nontrivial-root (expmod-miller base (/ exp 2) m) m) ; would really love to not need to evaluate this twice
+             0
+             (remainder (square (expmod base (/ exp 2) m)) m)
+             )
+         )
+        (else
+         (remainder (* base (expmod base (- exp 1) m))
+                    m))))     
+````
+
+## 1.29
+Simpson's Rule
+````scheme
+
+(define (integral-simpson f a b n)
+  (define (arg-diff x) (+ x (/ (- b a) n)))
+    (* (sum-simpson f a arg-diff n 0) (/ (/ (- b a) n) 3.0)))
+
+(define (sum-simpson term a next b termno)
+  (if (> termno b)
+      0
+      (+ (cond
+           ((or (= termno b) (= a 0)) term a)
+           ((= (remainder termno 2) 0) (* (term a) 2))
+           ((= (remainder termno 2) 1) (* (term a) 4)))
+         (sum-simpson term (next a) next b (inc termno)))))
+````
+
+integrating using SCIP integral at 0.01 step size: 0.24998750000000042
+integrating using Simpson's Rule with 10 steps: 0.25
+integrating using Simpson's Rule with 100 steps: 0.25
+integrating using Simpson's Rule with 1000 steps: 0.25
+
+Seems like I can't get it to be less accurate? Pretty good for an approximation. 
+
+
+## 1.30 
+````scheme
+(define (sum-iter term a next b)
+  (define (iter a result)
+    (if (> a b)
+        result
+        (iter (next a) (+ (term a) result))))
+  (iter a 0))
+````
+
+## 1.31
+````scheme
+; define a product procedure
+(define (product term a next b)
+  (if (> a b)
+      1
+      (* (term a)
+         (product term (next a) next b))))
+
+; define factorial in terms of 'product'
+(define (factorial n)
+  (define (identity x) x)
+  (product identity 1 inc n))
+
+;Also use product to compute approximations to pi (this is recursive)
+(define (pi-product n)
+  (define (pi-term n)
+    (if (= (remainder n 2) 0)
+        (/ (+ n 2.0) (+ n 1))
+        (/ (+ n 1.0) (+ n 2)))
+    )
+  (* 4 (product pi-term 1 inc n))
+  )
+
+
+;Now iterative
+
+(define (product-iter term a next b)
+  (define (iter a result)
+    (if (> a b)
+        result
+        (iter (next a) (* (term a) result))))
+  (iter a 1))
+
+(define (pi-product-iter n)
+  (define (pi-term n)
+    (if (= (remainder n 2) 0)
+        (/ (+ n 2.0) (+ n 1))
+        (/ (+ n 1.0) (+ n 2)))
+    )
+  (* 4 (product-iter pi-term 1 inc n))
+  )
+````
+
+## 1.32
