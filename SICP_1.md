@@ -753,3 +753,33 @@ Seems like I can't get it to be less accurate? Pretty good for an approximation.
 ````
 
 ## 1.32
+````scheme
+; write accumulate
+(define (accumulate combiner null-value term a next b)
+  (if (> a b)
+      null-value
+      (combiner (term a)
+                (accumulate term (next a) next b))))
+
+
+; show how sum and product can be written as accumulate
+; sum
+(define (sum-acum term a next b)
+  (define (add a b) (+ a b))
+  (accumulate add 0 term a next b)
+  )
+
+; product
+(define (prod-acum term a next b)
+  (define (product a b) (* a b))
+  (accumulate product 1 term a next b)
+  )
+
+; now write accumulate as iterative
+(define (accumulate-iter combiner null-value term a next b)
+  (define (iter a result)
+    (if (> a b)
+        result
+        (iter (next a) (combiner (term a) result))))
+  (iter a null-value))
+  ````
