@@ -783,3 +783,40 @@ Seems like I can't get it to be less accurate? Pretty good for an approximation.
         (iter (next a) (combiner (term a) result))))
   (iter a null-value))
   ````
+
+## 1.33
+; write filtered-accumulate
+(define (filtered-accumulate filter combiner null-value term a next b)
+  (if (> a b)
+      null-value
+      (combiner (if (filter a)
+                    (term a)
+                    null-value)
+                (filtered-accumulate filter combiner null-value term (next a) next b))))
+
+; sum of squares of prime numbers in the interval of a to b
+(define (sum-squares a b)
+  (define (add x y) (+ x y))
+  (define (inc x) (+ 1 x))
+  (define (square x) (* x x))
+ (filtered-accumulate prime? add 0 square a inc b))
+; (sum-squares 2 10)
+
+;the product of all the positive integers less than n that are relatively prime to n (i.e., all positive integers i < n such that GCD(i,n) = 1).
+  (define (identity x) (* 1 x))
+  (define (gcd x y)
+       (if (= 0 y)
+          x
+         (gcd y (remainder x y))
+         )
+    )
+  (define (relative-prime? x y)
+    (if (= (gcd x y) 1)
+       #t
+       #f
+    ))
+
+(define (rel-prime n)
+ (filtered-accumulate prime? product 1 identity 1 inc n))
+ 
+ ## 1.34
