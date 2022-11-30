@@ -759,7 +759,7 @@ Seems like I can't get it to be less accurate? Pretty good for an approximation.
   (if (> a b)
       null-value
       (combiner (term a)
-                (accumulate term (next a) next b))))
+                (accumulate combiner null-value term (next a) next b))))
 
 
 ; show how sum and product can be written as accumulate
@@ -820,3 +820,119 @@ Seems like I can't get it to be less accurate? Pretty good for an approximation.
  (filtered-accumulate prime? product 1 identity 1 inc n))
  
  ## 1.34
+Seems like doing `(f f)` when `(define (f g) (g 2))` gives a syntax error. 
+
+(f f) -> (f 2) -> (2 2) which leads to error
+
+## 1.35
+Show that the golden ratio (phi) is a fixed point of the transformation f(x) = 1+1/x
+(phi)^2 = (phi) + 1
+(phi) = 1 + 1/(phi)
+
+compute (phi) by means of the fixed-point procedure.
+
+````scheme
+(fixed-point (lambda (x) (+ 1 (/ 1.0 x))) 1)
+````
+1.6180327868852458
+
+## 1.36
+Modify fixed-point so that it prints the sequence of approximations it generates, using the newline and display primitives
+````scheme
+(define tolerance 0.00001)
+(define (fixed-point f first-guess)
+  (newline)
+  (display first-guess)
+  (define (close-enough? v1 v2)
+    (< (abs (- v1 v2)) tolerance))
+  (define (try guess)
+    (let ((next (f guess)))
+      (if (close-enough? guess next)
+          next
+          (try next))))
+  (try first-guess))
+ 
+ ; find a solution to x^x = 1000 by finding a fixed point of x |->  log(1000)/log(x)
+
+(fixed-point (lambda (x) (/ (log 1000) (log x))) 1.01)
+; takes 39 guesses
+
+(define (average x y) (/ (+ x y) 2))
+(display "now with average damping")
+(newline)
+; now do average damping
+(fixed-point (lambda (x) (average x (/ (log 1000) (log x)))) 1.01)
+; only 15 guesses 
+````
+
+## 1.37
+````scheme
+(define (cont-frac n d k)
+  (define (combine a b) (/ (n (- k a)) (+ (d (- k a)) b)))
+  (define (identity x) x)
+  (accum-iter combine (/ (n k) (d k)) identity 1 inc (- k 1)))
+
+(cont-frac (lambda (i) 1.0)
+           (lambda (i) 1.0)
+           5)
+
+
+(cont-frac (lambda (i) 1.0)
+           (lambda (i) 1.0)
+           10)
+
+
+(cont-frac (lambda (i) 1.0)
+           (lambda (i) 1.0)
+           15)
+````
+0.625
+0.6179775280898876
+0.6180344478216819
+
+15 iterations gets 4 decimal point accuracy.
+
+Now as recursive 
+````scheme
+(define (accum-r combiner null-value term a next b)
+  (display a)
+  (newline)
+  (if (< a b)
+      null-value
+      (combiner (term a)
+                (accum-r combiner null-value term (next a) next b))))
+
+
+
+(define (cont-frac n d k)
+  (define (combine a b) (/ (n (- k a)) (+ (d (- k a)) b)))
+  (define (identity x) x)
+  (accum-r combine (/ (n k) (d k)) identity (- k 1) dec  1))
+  ````
+  
+## 1.38
+````scheme
+; 1.38 
+(define (euler-e n)
+ (+ 2 (cont-frac (lambda (i) 1.0)
+           (lambda (i) (if (= 2 (remainder i 3))
+                           (+ 2 (* (/ (- i 2) 3) 2))
+                           1.0))
+           n))
+  )
+
+(euler-e 700)
+````
+2.71828182845
+
+## 1.39
+````scheme
+; define (tan-cf x k)
+(define (tan-cf x k)
+ (cont-frac (lambda (i) (if (= 1 i)
+                                 x
+                                 (- 0 (* x x))))
+           (lambda (i) (- (* 2.0 i) 1.0))
+           k)
+  )
+````
