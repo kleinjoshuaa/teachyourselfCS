@@ -983,4 +983,65 @@ Define a procedure double that takes a procedure of one argument as argument and
 ````
     
 ## 1.44
- 
+````scheme
+ (define (smooth f)
+  (define dx 0.001)
+     (lambda(x) ( / (+ (f x) (f (+ x dx)) (- f dx)) 3)
+  ))
+
+(define (smooth-nth f n)
+  (repeated (smooth f) n)
+)
+(repeated (smooth cube) 2)
+````
+
+## 1.45
+(define (nth-root n x)
+  (define (num-damps x)
+    (floor (/ (log x) (log 2))
+           )
+    )
+  (define (root x)
+  (fixed-point ((repeated average-damp (num-damps n)) (lambda (y) (/ x (expt y (- n 1)))))
+               1.0))
+
+  
+    (root x)
+  )
+  
+# 1.46
+````scheme
+; Write a procedure iterative-improve that takes two procedures as arguments: a method for telling whether a guess is good enough and a method for improving a guess.
+; Iterative-improve should return as its value a procedure that takes a guess as argument and keeps improving the guess until it is good enough.
+
+  
+(define (iterate-improve good-enough? improve-it)
+ (define (iterate guess)
+   (if (good-enough? guess)
+      guess
+      (iterate (improve-it guess))
+  )
+ )
+  (lambda (x) (iterate x)) 
+  )
+
+
+; Rewrite the sqrt procedure of section 1.1.7
+
+
+(define (sqrt x)
+  (define (is-good? guess)
+    (< (abs (- (square guess) x)) 0.001))
+  (define (improve guess)
+    (average guess (/ x guess)))
+  ((iterate-improve is-good? improve) 1.001))
+  
+  
+  ; and the fixed-point procedure of section 1.3.3 in terms of iterative-improve.
+
+(define (fixed-pt-imp f first-guess)
+  (define tol 0.00001)
+  (define (close-enough? v1)
+    (< (abs (- v1 (f v1))) tol))
+  ((iterate-improve close-enough? f) first-guess))
+````
