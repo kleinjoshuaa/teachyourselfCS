@@ -38,6 +38,7 @@ I've had this GitHub account for over a decade. I hope within the next decade to
 - [ ] Read and do the exercises in the first 3 chapters  [Structure and Interpretation of Computer Programming](https://mitpress.mit.edu/sites/default/files/sicp/full-text/book/book.html)
   - [Exercises - Chapter 1](SICP_1.md)
   - [Exercises - Chapter 2.1](SICP_2_1.md)
+  - [Exercises - Chapter 2.1](SICP_2_2.md)
  ### Extra
 - [ ] Come back to Finish Chapters 4 and 5 with associated exercises
 
