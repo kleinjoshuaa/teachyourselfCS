@@ -150,3 +150,96 @@
 
 (square-list (list 1 2 3 4))
 ````
+## 2.22
+````scheme
+; 2.22
+
+; Louis Reasoner tries to rewrite the first square-list procedure of exercise 2.21 so that it evolves an iterative process:
+
+(define (square-list3 items)
+  (define (iter things answer)
+    (if (null? things)
+        answer
+        (iter (cdr things) 
+              (cons (square (car things))
+                    answer))))
+  (iter items nil))
+
+
+
+; Unfortunately, defining square-list this way produces the answer list in the reverse order of the one desired. Why?
+; This is reversed because when you iterate through the list it builds the list - and building a list with cons (newElement existingList) always builds the list backwards.
+; In other words if you iterate through (list 1 2 3) and call (cons 1 newList) (cons 2 newList) (cons 3 newList) you get (list 3 2 1)
+
+;Louis then tries to fix his bug by interchanging the arguments to cons:
+
+(define (square-list4 items)
+  (define (iter things answer)
+    (if (null? things)
+        answer
+        (iter (cdr things)
+              (cons answer
+                    (square (car things))))))
+  (iter items nil))
+
+;This doesn't work either. Explain.
+;(square-list4 (list 1 2 3 4))
+; reversing the arguments to cons won't work either. In that case you get a malformed list with nulls as the first argument
+````
+
+## 2.23
+````scheme
+; Give an implementation of for-each.
+
+
+(define (for-each proc items)
+  (cond ((> (length items) 0) (proc (car items))
+       (for-each proc (cdr items)))
+      )
+  )
+
+;(for-each (lambda (x) (newline) (display x))
+ ;         (list 57 321 88))
+````
+## 2.24
+
+ Suppose we evaluate the expression (list 1 (list 2 (list 3 4))).
+ Give the result printed by the interpreter
+
+````scheme
+(1 ( 2 ( 3 4)))
+````
+
+ the corresponding box-and-pointer structure,
+
+```mermaid
+graph LR
+    subgraph "(1 (2 (3 4)))"
+    c1["[°][°]"]-->c2["1"]
+    end
+    subgraph "(2 (3 4))"
+    c1-->b2["[°][°]"]
+    b2--> b3["2"]
+    end
+    subgraph "(3 4)"
+    b2-->a2["[°][°]"]
+    end
+    subgraph "(4)"
+    a2-->a3["[°][\]"]
+    a3-->4
+    end
+
+
+```
+
+
+ and the interpretation of this as a tree (as in figure 2.6).
+````mermaid
+graph TD
+    A(("(1 (2 (3 4)))"))-->B((1))
+    A-->C(("(2 ( 3 4))"))
+    C-->F((2))
+    C-->G(("(3 4)"))
+    G-->E(("3"))
+    G-->H(("4"))
+````
