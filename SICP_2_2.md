@@ -1,4 +1,5 @@
 ## 2.17
+````scheme
 ; 2.17
 
 ; Define a procedure last-pair that returns the list that contains only the last element of a given (nonempty) list:
@@ -13,9 +14,10 @@
 (define (last-pair l)
   (list-ref l ( - (length l) 1))
   )
-
+````
 
 ## 2.18
+````scheme
 ; Define a procedure reverse that takes a list as argument and returns a list of the same elements in reverse order:
 
 (define (reverse l)
@@ -26,9 +28,9 @@
   )
   (rev (list) 0)
   )
-
+````
 ## 2.19
-
+````scheme
 (define us-coins (list 50 25 10 5 1))
 (define uk-coins (list 100 50 20 10 5 2 1 0.5))
 (define reversed-coins (list 1 5 10 25 50))
@@ -67,8 +69,9 @@
 ;(cc 100 reversed-coins)
 
 ; It doesn't seem like the order actually matters in this scenario. We are always subtracting and computing every possible combination
-
+````
 ## 2.20
+````scheme
 (define (same-parity . l)
   (define (even? x)
     (= (remainder x 2) 0))
@@ -117,8 +120,9 @@
 
 ;(same-parity2 2 3 4 5 6 7)
 ;(2 4 6)
-
+````
 ## 2.21
+````scheme
 ;2.21
 
 (define (scale-list items factor)
@@ -145,3 +149,4 @@
   (map (lambda (x) (* x x)) items))
 
 (square-list (list 1 2 3 4))
+````
