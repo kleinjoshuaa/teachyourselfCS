@@ -44,7 +44,8 @@ I've had this GitHub account for over a decade. I hope within the next decade to
 
 ## Computer Architecture
 ### Core
-- [ ] Read and do the practice problems in the first 6 Chapters of [Computer Systems: A Programmer's Perspective](http://csapp.cs.cmu.edu/3e/home.html)
+- [ ] Read the first 6 Chapters of [Computer Systems: A Programmer's Perspective](http://csapp.cs.cmu.edu/3e/home.html)
+- [ ] Do the labs listed here [on the CMU site](http://www.cs.cmu.edu/~213/labs.html) with the [self study handouts](http://csapp.cs.cmu.edu/3e/labs.html)
 ### Extra
 - [ ] Read Chapters 7-12 and do the exercises 
 
