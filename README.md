@@ -93,7 +93,8 @@ I've had this GitHub account for over a decade. I hope within the next decade to
 
 ### Extra
 
-- [ ] [Data and Reality](https://www.amazon.com/Data-Reality-Perspective-Perceiving-Information/dp/1935504215)
+- [x] [Data and Reality](https://www.amazon.com/Data-Reality-Perspective-Perceiving-Information/dp/1935504215)
+  - This was kind of a dud. It wasn't 'bad' per se - just that for anyone who's worked with a DB based information system a lot of this stuff is, or   should be, pretty obvious. 
 - [ ] U Chicago [ChiDB](http://chi.cs.uchicago.edu/chidb/index.html) Project
 
 ## Languages and Compilers
