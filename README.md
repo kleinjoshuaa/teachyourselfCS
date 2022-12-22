@@ -113,5 +113,6 @@ I've had this GitHub account for over a decade. I hope within the next decade to
  - This one was reccomended by one of the founders of teachyourselfcs
  - Really fantastic book. Not too long either. 
  
- - [ ] Electricity and Magnetism - [Shankar Fundamentals of Physics](https://www.amazon.com/Fundamentals-Physics-II-Electromagnetism-Mechanics/dp/0300243782/ref=sr_1_3?crid=23EAQ65MELPWW&keywords=shankar+physics&qid=1669470175&sprefix=%2Caps%2C74&sr=8-3) 
+ - [x] Electricity and Magnetism - [Shankar Fundamentals of Physics](https://www.amazon.com/Fundamentals-Physics-II-Electromagnetism-Mechanics/dp/0300243782/ref=sr_1_3?crid=23EAQ65MELPWW&keywords=shankar+physics&qid=1669470175&sprefix=%2Caps%2C74&sr=8-3) 
   - I skipped out on the E&M course in college. I regret that. 
+  - Excellent and well written. Definitely worth reading for those who didn't get the physics education they wanted.
