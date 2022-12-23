@@ -664,3 +664,67 @@ graph TD
 
   ;(reverse3 (list 4 5 6))
 ````
+ ## 2.40
+````scheme
+;  Define a procedure unique-pairs that, given an integer n,
+; generates the sequence of pairs (i,j) with 1< j< i< n.
+
+(define (unique-pairs n)
+  (accumulate2 append
+            nil
+            (map (lambda (i)
+                   (map (lambda (j) (list i j))
+                        (enumerate-interval 1 (- i 1))))
+                 (enumerate-interval 1 n)))
+  )
+
+;(unique-pairs 10)
+
+; Use unique-pairs to simplify the definition of prime-sum-pairs given above.
+
+
+(define (prime-sum-pairs2 n)
+  (map make-pair-sum
+       (filter prime-sum?
+               (unique-pairs n))))
+
+;(prime-sum-pairs 6)
+;(prime-sum-pairs2 6)
+````
+
+ ## 2.41
+````scheme
+; Write a procedure to find all ordered triples of distinct positive integers i, j, and k less than or equal to a given integer n that sum to a given integer s.
+
+
+(define (val-sum-triple? triple value)
+  (= value (+ (car triple) (cadr triple) (cadr (cdr triple))))
+  )
+
+(define (make-triple-sum triple)
+  (list (car triple) (cadr triple) (cadr (cdr triple)) (+ (car triple) (cadr (cdr triple)) (cadr triple)))
+  )
+
+
+(define (unique-triples n)
+ (flatmap
+   (lambda (k)
+         (map (lambda (l) (append k (list l))) (enumerate-interval 1 (- (cadr k) 1))))
+                
+  (accumulate2 append
+            nil
+            (map (lambda (i)
+                   (map (lambda (j) (list i j))
+                        (enumerate-interval 2 (- i 1))))
+                 (enumerate-interval 3 n)))
+  )
+  )
+  
+
+
+(define (equal-sum-triples n s)
+  (map make-triple-sum
+       (filter (lambda (x)
+                 (val-sum-triple? x s))
+               (unique-triples n))))
+````
