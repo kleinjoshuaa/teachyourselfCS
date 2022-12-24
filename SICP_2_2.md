@@ -728,3 +728,203 @@ graph TD
                  (val-sum-triple? x s))
                (unique-triples n))))
 ````
+## 2.42
+
+This one was really a bear. I'm not particularly happy with my answer but it does work. I've had to evaluate the logic and compare against some other answers i've found on the 'net just to confirm I did the logic correctly. 
+
+````scheme
+; ## 2.42
+
+(define empty-board (list))
+
+
+
+(define (adjoin-position row col existing-pos)
+  (append existing-pos (list (list row col)))
+)
+
+
+
+(define (queens board-size)
+  (define (queen-cols k)
+    (display k)
+    (newline)
+    (if (= k 0)
+        (list empty-board)
+        (filter
+         (lambda (positions) (safe? k positions))
+         (flatmap
+          (lambda (rest-of-queens)
+            (map (lambda (new-row)
+                   (adjoin-position new-row k rest-of-queens))
+                 (enumerate-interval 1 board-size)))
+          (queen-cols (- k 1))))))
+  (queen-cols board-size))
+
+
+
+
+
+
+(define (in-list? row col l)
+  (cond ( (< (length l) 1)
+        #f)
+        ( (and (= row (car (car l))) (= col (list-ref (car l) 1)))
+          #t)
+        (else
+         (in-list? row col (cdr l))
+         )
+  )
+  )
+
+(define (create-diag-one row col  positions )
+  (if (or (= col 0) (= 0 row))
+         (if ( > (length positions) 1)
+             (cdr positions)
+             nil)
+        (create-diag-one (- row 1) (- col 1) (append positions (list (list row col))))
+        )
+  )
+         
+(define (create-diag-two row col  positions max )
+  (if (or (= col max) (= 0 row))
+         (if ( > (length positions) 1)
+             (cdr positions)
+             nil)
+        (create-diag-two (- row 1) (+ col 1) (append positions (list (list row col))) max)
+        )
+  )
+(define (create-diag-three row col  positions max )
+  (if (or (= col 0) (= max row))
+         (if ( > (length positions) 1)
+             (cdr positions)
+             nil)
+        (create-diag-three (+ row 1) (- col 1) (append positions (list (list row col))) max)
+        )
+  )
+(define (create-diag-four row col  positions max )
+  (if (or (= col max) (= max row))
+         (if ( > (length positions) 1)
+             (cdr positions)
+             nil)
+        (create-diag-four (+ row 1) (+ col 1) (append positions (list (list row col))) max)
+        )
+  )
+
+
+
+
+  ; get the queen col, row
+  (define (get-queen col pos)
+    (cond ((= col (list-ref (car pos) 1))
+           (car pos))
+          (else
+           (get-queen col (cdr pos))
+           )
+          )
+    )
+    ; find if there is a queen in this col
+  (define (find-matching-col col pos)
+    (cond
+          ((< (length pos) 1)
+           #f)
+          ((= col (list-ref (car pos) 1))
+           #t)
+          (else
+            (find-matching-col col (cdr pos))))
+    )
+    (define (find-matching-row row pos)
+    (cond ((< (length pos) 1)
+           #f)
+          ((= row (car (car pos)))
+           #t)
+          (else
+            (find-matching-row row (cdr pos))))
+    )
+  ; get max dimension of the board (ie the size in one direction)
+  (define (get-max-dim existing-pos existing-max)
+    (if (< (length existing-pos)  1)
+        (+ 1 existing-max)
+        (get-max-dim (cdr existing-pos) (if (> (max (car (car existing-pos)) (list-ref (car existing-pos) 1)) existing-max)
+                                            (max (car (car existing-pos)) (list-ref (car existing-pos) 1))
+                                            existing-max))
+        )
+    )
+    
+     ; check if the points are on the line
+    (define (find-matching-diag queen pos max-dim) ; there are 4 directions to check
+      (let ((row (car queen)) (col (list-ref queen 1)))
+      (cond (( > (length (filter (lambda (this-queen) (in-list? (car this-queen) (list-ref this-queen 1) (create-diag-one row col (list)))) pos) ) 0)
+           #t)
+          ((> (length (filter (lambda (this-queen) (in-list? (car this-queen) (list-ref this-queen 1) (create-diag-two row col (list) max-dim))) pos)) 0)
+           #t)
+          ((> (length (filter (lambda (this-queen) (in-list? (car this-queen) (list-ref this-queen 1) (create-diag-three row col (list) max-dim))) pos)) 0)
+           #t)
+          ((> (length (filter (lambda (this-queen) (in-list? (car this-queen) (list-ref this-queen 1) (create-diag-four row col (list) max-dim))) pos)) 0)
+           #t)
+          (else
+              #f)
+      
+    )
+      )
+      )
+
+(define (remove-queen item sequence)
+  (filter (lambda (x) (not (and (= (list-ref x 1) (list-ref item 1)) (= (list-ref x 0) (list-ref item 0)))))
+          sequence))
+
+(define (safe? col existing-pos)
+  (let ((queen (get-queen col existing-pos)) (max-dim (get-max-dim existing-pos 0)) (rest-queens (remove-queen (get-queen col existing-pos) existing-pos)))
+    (cond ((find-matching-col col rest-queens)
+           #f)
+          ((find-matching-row (car queen) rest-queens)
+           #f)
+          ((find-matching-diag queen rest-queens max-dim)
+           #f)
+          (else
+           #t)
+          )
+    )
+  )
+    
+````
+
+## 2.43
+ the normal flatmap is
+ ````scheme
+ (flatmap
+          (lambda (rest-of-queens)
+            (map (lambda (new-row)
+                   (adjoin-position new-row k rest-of-queens))
+                 (enumerate-interval 1 board-size)))
+          (queen-cols (- k 1))))))
+````
+
+Louis Reasoner:
+````scheme
+(flatmap
+ (lambda (new-row)
+   (map (lambda (rest-of-queens)
+          (adjoin-position new-row k rest-of-queens))
+        (queen-cols (- k 1))))
+ (enumerate-interval 1 board-size))
+ ````
+ 
+
+  flatmap iterates through the sequence - in the first case you iterate once through the number of queen cols, and for each iterate from 1 to the board size. The solution by lous reasoner is calling the queen-cols function recursively for each enumeration. Doing some computation for number of steps each iteration takes (doing some log based debugging :p )
+  
+  | Board Size        | Original #Steps      | Reasoner # Steps  |
+| ------------- |:-------------:| -----:|
+| 1    | 2 | 2 |
+| 2      | 3      |   7 |
+| 3| 4      |    40 |
+| 4| 5      |    341 |
+| 5| 6      |    3906 |
+
+Reviewing the integer sequence gives us the sum of n^n [here](https://oeis.org/A031973) so it's the n^n(T), essentially. 
+
+## 2.44
+
+
+
+ ******** 
