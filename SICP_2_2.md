@@ -1103,7 +1103,8 @@ Reviewing the integer sequence gives us the sum of n^n [here](https://oeis.org/A
 ;(paint (segments->painter (wave)))
 ````
 
-##2.50
+## 2.50
+
 ````scheme
 (define (flip-horiz painter)
   (transform-painter painter
