@@ -39,6 +39,7 @@ I've had this GitHub account for over a decade. I hope within the next decade to
   - [Exercises - Chapter 1](SICP_1.md)
   - [Exercises - Chapter 2.1](SICP_2_1.md)
   - [Exercises - Chapter 2.2](SICP_2_2.md)
+  - [Exercises - Chapter 2.3](SICP_2_3.md)
  ### Extra
 - [ ] Come back to Finish Chapters 4 and 5 with associated exercises
 
