@@ -925,6 +925,309 @@ Reviewing the integer sequence gives us the sum of n^n [here](https://oeis.org/A
 
 ## 2.44
 
+````scheme
+(define (right-split painter n)
+  (if (= n 0)
+      painter
+      (let ((smaller (right-split painter (- n 1))))
+        (beside painter (below smaller smaller)))))
 
 
- ******** 
+(define (up-split painter n)
+  (if (= n 0)
+      painter
+      (let ((smaller (up-split painter (- n 1))))
+        (below painter (beside smaller smaller)))))
+
+(define (corner-split painter n)
+  (if (= n 0)
+      painter
+      (let ((up (up-split painter (- n 1)))
+            (right (right-split painter (- n 1))))
+        (let ((top-left (beside up up))
+              (bottom-right (below right right))
+              (corner (corner-split painter (- n 1))))
+          (beside (below painter top-left)
+                  (below bottom-right corner))))))
+
+
+;(paint (corner-split einstein 4))
+````
+## 2.45
+````scheme
+(define (split op1 op2)
+  (define (in-split painter n)
+ (if (= n 0)
+      painter
+      (let ((smaller (in-split painter (- n 1))))
+        (op1 painter (op2 smaller smaller)))))
+  in-split
+  )
+
+
+  
+
+(define right-split2 (split beside below))
+(define up-split2 (split below beside))
+
+(define (corner-split2 painter n)
+  (if (= n 0)
+      painter
+      (let ((up (up-split2 painter (- n 1)))
+            (right (right-split2 painter (- n 1))))
+        (let ((top-left (beside up up))
+              (bottom-right (below right right))
+              (corner (corner-split painter (- n 1))))
+          (beside (below painter top-left)
+                  (below bottom-right corner))))))
+
+;(paint (corner-split2 einstein 4))
+````
+## 2.46
+````scheme
+; A two-dimensional vector v running from the origin to a point can be represented as a pair consisting of an x-coordinate and a y-coordinate.
+; Implement a data abstraction for vectors by giving a constructor make-vect and corresponding selectors xcor-vect and ycor-vect.
+; In terms of your selectors and constructor, implement procedures add-vect, sub-vect, and scale-vect that perform the operations vector addition, vector subtraction, and multiplying a vector by a scalar:
+
+(define (make-vect x y)
+  (list x y))
+(define (xcor-vect v)
+  (car v))
+(define (ycor-vect v)
+  (cadr v))
+(define (add-vect v1 v2)
+  (make-vect (+ (xcor-vect v1) (xcor-vect v2)) (+ (ycor-vect v1) (ycor-vect v2)))
+  )
+(define (sub-vect v1 v2)
+  (make-vect (- (xcor-vect v1) (xcor-vect v2)) (- (ycor-vect v1) (ycor-vect v2)))
+  )
+
+(define (scale-vect s v)
+  (make-vect (* (xcor-vect v) s) (* (ycor-vect v) s))
+  )
+````
+
+## 2.47
+````scheme
+; For each constructor supply the appropriate selectors to produce an implementation for frames.
+(define (make-frame origin edge1 edge2)
+  (list origin edge1 edge2))
+
+(define (origin-frame frame)
+  (list-ref frame 0))
+
+(define (edge1-frame frame)
+  (list-ref frame 1))
+
+(define (edge2-frame frame)
+  (list-ref frame 2))
+
+(define (make-frame2 origin edge1 edge2)
+  (cons origin (cons edge1 edge2)))
+
+(define (origin-frame2 frame)
+  (car frame))
+
+(define (edge1-frame2 frame)
+  (cadr frame))
+
+(define (edge2-frame2 frame)
+  (cdr (cdr frame) ))
+````
+
+## 2.48
+````scheme
+;Use your vector representation from exercise 2.46 to define a representation for segments with a constructor make-segment and selectors start-segment and end-segment.
+
+(define (make-seg v1 v2)
+  (cons v1 v2))
+
+(define (start-seg s)
+  (car s))
+
+(define (end-seg s)
+  (cdr s))
+````
+
+## 2.49
+
+````scheme
+
+;(define (segments->painter2 segment-list)
+;  (lambda (frame)
+;    (for-each
+;     (lambda (segment)
+;       (draw-line
+;        ((frame-coord-map frame) (start-segment segment))
+;        ((frame-coord-map frame) (end-segment segment))))
+;     segment-list)))
+
+
+; using the drracket supplied 'segment' and 'vect' functions
+
+; a.  The painter that draws the outline of the designated frame. (I am using the #drracket SICP-pict package so I am using segment and vect)
+;(paint (segments->painter (list (segment (vect 0 0) (vect 0 1)) (segment (vect 0 1) (vect 1 1)) (segment (vect 1 1) (vect 1 0)) (segment (vect 1 0) (vect 0 0)) )))
+
+; b.  The painter that draws an ``X'' by connecting opposite corners of the frame.
+;(paint (segments->painter (list (segment (vect 0 0) (vect 1 1)) (segment (vect 0 1) (vect 1 0)) )))
+
+; c. The painter that draws a diamond shape by connecting the midpoints of the sides of the frame.
+;(paint (segments->painter (list  (segment (vect 0.5 1) (vect 1 0.5)) (segment (vect 1 0.5) (vect 0.5 0)) (segment (vect 0.5 0) (vect 0 0.5)) (segment (vect 0 0.5) (vect 0.5 1)) )))
+
+; d. the wave painter (found these coords online - seemed liked not a productive use of time to try and measure or guess each one)
+
+(define (wave) (list 
+                       (segment (vect .25 0) (vect .35 .5)) 
+                       (segment (vect .35 .5) (vect .3 .6)) 
+                       (segment (vect .3 .6) (vect .15 .4)) 
+                       (segment (vect .15 .4) (vect 0 .65)) 
+                       (segment (vect 0 .65) (vect 0 .85)) 
+                       (segment (vect 0 .85) (vect .15 .6)) 
+                       (segment (vect .15 .6) (vect .3 .65)) 
+                       (segment (vect .3 .65) (vect .4 .65)) 
+                       (segment (vect .4 .65) (vect .35 .85)) 
+                       (segment (vect .35 .85) (vect .4 1)) 
+                       (segment (vect .4 1) (vect .6 1)) 
+                       (segment (vect .6 1) (vect .65 .85)) 
+                       (segment (vect .65 .85) (vect .6 .65)) 
+                       (segment (vect .6 .65) (vect .75 .65)) 
+                       (segment (vect .75 .65) (vect 1 .35)) 
+                       (segment (vect 1 .35) (vect 1 .15)) 
+                       (segment (vect 1 .15) (vect .6 .45)) 
+                       (segment (vect .6 .45) (vect .75 0)) 
+                       (segment (vect .75 0) (vect .6 0)) 
+                       (segment (vect .6 0) (vect .5 .3)) 
+                       (segment (vect .5 .3) (vect .4 0)) 
+                       (segment (vect .4 0) (vect .25 0)) 
+                       ))
+;(paint (segments->painter (wave)))
+````
+
+##2.50
+````scheme
+(define (flip-horiz painter)
+  (transform-painter painter
+                     (vect 1.0 0.0)   ; new origin
+                     (vect 0 0)   ; new end of edge1
+                     (vect 1.0 1.0))) ; new end of edge2
+
+
+(define (rotate90 painter)
+  (transform-painter painter
+                     (vect 1.0 0.0)
+                     (vect 1.0 1.0)
+                     (vect 0.0 0.0)))
+
+(define (rotate180 painter)
+  (transform-painter painter
+                     (vect 1.0 1.0)
+                     (vect 0.0 1.0)
+                     (vect 1.0 0.0)))
+
+(define (rotate270 painter)
+  (transform-painter painter
+                     (vect 0.0 1.0)
+                     (vect 0.0 0.0)
+                     (vect 1.0 1.0)))
+````
+
+## 2.51
+````scheme
+; define "below"
+
+; first by writing a procedure analagous to beside
+
+(define (below2 painter1 painter2)
+  (let ((split-point (vect 0 0.5)))
+    (let ((paint-bottom
+           (transform-painter painter1
+                              (vect 0.0 0.0)
+                              (vect 1.0 0.0)
+                              split-point))
+          (paint-top
+           (transform-painter painter2
+                              split-point
+                              (vect 1.0 0.5)
+                              (vect 0 1.0))))
+      (lambda (frame)
+        (paint-bottom frame)
+        (paint-top frame)))))
+
+; then in terms of beside with a suitable rotation
+
+(define (below3 painter1 painter2)
+  (rotate90
+   (beside
+    (rotate270 painter1)
+    (rotate270 painter2)
+    )
+   )
+  )
+
+````
+
+## 2.52
+````scheme
+; a. add some segments to the wave painter (added a chin)
+
+(define (wave2) (list 
+                       (segment (vect .25 0) (vect .35 .5)) 
+                       (segment (vect .35 .5) (vect .3 .6)) 
+                       (segment (vect .3 .6) (vect .15 .4)) 
+                       (segment (vect .15 .4) (vect 0 .65)) 
+                       (segment (vect 0 .65) (vect 0 .85)) 
+                       (segment (vect 0 .85) (vect .15 .6)) 
+                       (segment (vect .15 .6) (vect .3 .65)) 
+                       (segment (vect .3 .65) (vect .4 .65)) 
+                       (segment (vect .4 .65) (vect .35 .85)) 
+                       (segment (vect .35 .85) (vect .4 1)) 
+                       (segment (vect .4 1) (vect .6 1)) 
+                       (segment (vect .6 1) (vect .65 .85)) 
+                       (segment (vect .65 .85) (vect .6 .65)) 
+                       (segment (vect .6 .65) (vect .75 .65)) 
+                       (segment (vect .75 .65) (vect 1 .35)) 
+                       (segment (vect 1 .35) (vect 1 .15)) 
+                       (segment (vect 1 .15) (vect .6 .45)) 
+                       (segment (vect .6 .45) (vect .75 0)) 
+                       (segment (vect .75 0) (vect .6 0)) 
+                       (segment (vect .6 0) (vect .5 .3)) 
+                       (segment (vect .5 .3) (vect .4 0)) 
+                       (segment (vect .4 0) (vect .25 0))
+                                              (segment (vect 0.35 0.85) (vect .45 .6)) 
+                       (segment (vect .45 .6) (vect .55 0.6)) 
+                       (segment (vect .55 0.6) (vect .65 0.85)) 
+                       ))
+
+;(paint (segments->painter (wave2)))
+
+; b. Change the pattern constructed by corner-split (this actually seems like a pretty cool pattern
+
+(define (corner-split3 painter n)
+  (if (= n 0)
+      painter
+      (let ((up (up-split painter (- n 1)))
+            (right (right-split painter (- n 1))))
+        (let ((top-left (beside up up))
+              (bottom-right (below right right))
+              (corner (corner-split painter (- n 1))))
+          (below (beside painter top-left)
+                  (beside bottom-right corner))))))
+
+
+; c.  Modify the version of square-limit that uses square-of-four so as to assemble the corners in a different pattern. (here they are facing inwards)
+
+(define (square-of-four tl tr bl br)
+  (lambda (painter)
+    (let ((top (beside (tl painter) (tr painter)))
+          (bottom (beside (bl painter) (br painter))))
+      (below bottom top))))
+
+
+
+
+(define (square-limit2 painter n)
+  (let ((combine4 (square-of-four identity flip-horiz
+                                  flip-vert rotate180 )))
+    (combine4 (corner-split painter n))))
+
+````
