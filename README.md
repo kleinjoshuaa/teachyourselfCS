@@ -47,8 +47,7 @@ I've had this GitHub account for over a decade. I hope within the next decade to
 ### Core
 - [ ] Read the first 6 Chapters of [Computer Systems: A Programmer's Perspective](http://csapp.cs.cmu.edu/3e/home.html)
 - [ ] Do the labs listed here [on the CMU site](http://www.cs.cmu.edu/~213/labs.html) with the [self study handouts](http://csapp.cs.cmu.edu/3e/labs.html)
-### Extra
-- [ ] Read Chapters 7-12 and do the exercises 
+
 
 ## Algorithms
 ### Core
@@ -56,8 +55,6 @@ I've had this GitHub account for over a decade. I hope within the next decade to
 - [x] Read [How to Solve It](https://smile.amazon.com/How-Solve-Mathematical-Princeton-Science/dp/069116407X/)
   - Polya is absolutely brilliant. I liked this one a lot too. 
 - [ ] Do 100 [Leetcode](https://www.leetcode.com) problems 
-### Extra
-- [ ] Do 100 more Leetcode
 - [ ] Implement each data structure listed in chapters 3 and 12 of Skiena.
 
 ## Mathematics for CS
@@ -104,8 +101,7 @@ I've had this GitHub account for over a decade. I hope within the next decade to
 ### Extra
 - [x] Read Steve Yegge's [Rich Programmer Food](https://steve-yegge.blogspot.com/2007/06/rich-programmer-food.html)
 - [ ] Hefron's [Theory of Computation](https://hefferon.net/computation/index.html)
-- [ ] Coursera's Programming Languages courses [A](https://www.coursera.org/learn/programming-languages-part-a), [B](https://www.coursera.org/learn/programming-languages-part-b), and [C](https://www.coursera.org/learn/programming-languages-part-c)
-- [ ] Write a toy compiler
+
 
 
 ## Elective: Software Engineering
