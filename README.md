@@ -40,6 +40,8 @@ I've had this GitHub account for over a decade. I hope within the next decade to
   - [Exercises - Chapter 2.1](SICP_2_1.md)
   - [Exercises - Chapter 2.2](SICP_2_2.md)
   - [Exercises - Chapter 2.3](SICP_2_3.md)
+### Extra
+- [ ] Chapters 4 and 5 and the exercises
 
 
 ## Computer Architecture
