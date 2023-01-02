@@ -12,7 +12,8 @@ I'm starting with Martin Kleppman's [Designing Data Intensive Applications](http
 
 I plan on primarily reading books and papers, and doing the exercises and projects as needed. 
 
-I will start with the Core listed requirements and do the Extra items during a second iteration of this list. 
+
+
 I've added some items/exercises from my own interests and from @jeffz4ng's [essay on teachyourselfcs](https://jeffzh4ng.com/essays/thoughts-on-teachyourselfcs.html)
 
 Within this repo I will also post my answers to problem sets and other misc code created for this journey. 
@@ -30,7 +31,6 @@ I've had this GitHub account for over a decade. I hope within the next decade to
 - [ ] Read the Readings from [MIT 6.824](https://pdos.csail.mit.edu/6.824/schedule.html)
 - [ ] Read the [MIT Distributed System Reading Group Papers](http://dsrg.pdos.csail.mit.edu/papers/)
 - [ ] Read [conflict free CRDTs](https://jzhao.xyz/posts/bft-json-crdt/)
-- [ ] Implement the [KV store](https://pdos.csail.mit.edu/6.824/labs/lab-kvraft.html) from MIT 6.824
 
 
 ## Programming
@@ -82,24 +82,19 @@ I've had this GitHub account for over a decade. I hope within the next decade to
 - [ ] Beej's [Guide to Network Programming](https://beej.us/guide/bgnet/html/)
 - [ ] [Wireshark Labs](https://gaia.cs.umass.edu/kurose_ross/wireshark.php)
 - [ ] U of Washington's [networking lectures](https://www.youtube.com/watch?v=xKNPTYtTnAo&list=PLVEo1P9gAninM7KwP1KKolfMQdNs6P6Am)
-- [ ] Implement [UChicago X-Projects](http://chi.cs.uchicago.edu/index.html#) for IRC, TCP, and IP Routing
 
 ## Databases
 ### Core
 - [ ] CS 186 [video lectures](https://www.youtube.com/user/CS186Berkeley/videos)
 - [ ] [Architecture of Database Systems](http://db.cs.berkeley.edu/papers/fntdb07-architecture.pdf)
 - [ ] The [Red Book](http://www.redbook.io/)
-
-### Extra
-
 - [x] [Data and Reality](https://www.amazon.com/Data-Reality-Perspective-Perceiving-Information/dp/1935504215)
   - This was kind of a dud. It wasn't 'bad' per se - just that for anyone who's worked with a DB based information system a lot of this stuff is, or   should be, pretty obvious. 
-- [ ] U Chicago [ChiDB](http://chi.cs.uchicago.edu/chidb/index.html) Project
+
 
 ## Languages and Compilers
 ### Core
 - [ ] Read Nystrom's [Crafting Interpreters](https://craftinginterpreters.com/contents.html) and do at least 2 challenges per chapter
-### Extra
 - [x] Read Steve Yegge's [Rich Programmer Food](https://steve-yegge.blogspot.com/2007/06/rich-programmer-food.html)
 - [ ] Hefron's [Theory of Computation](https://hefferon.net/computation/index.html)
 
