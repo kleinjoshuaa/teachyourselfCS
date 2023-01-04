@@ -40,8 +40,7 @@ I've had this GitHub account for over a decade. I hope within the next decade to
   - [Exercises - Chapter 2.1](SICP_2_1.md)
   - [Exercises - Chapter 2.2](SICP_2_2.md)
   - [Exercises - Chapter 2.3](SICP_2_3.md)
-### Extra
-- [ ] Chapters 4 and 5 and the exercises
+
 
 
 ## Computer Architecture
@@ -70,7 +69,6 @@ I've had this GitHub account for over a decade. I hope within the next decade to
 ## Operating Systems
 ### Core
 - [ ] Read [Operating Systems: Three Easy Pieces](http://pages.cs.wisc.edu/~remzi/OSTEP/)
-### Extra
 - [ ] Read Robert Love's [Linux Kernel Development](https://www.amazon.com/Linux-Kernel-Development-Robert-Love/dp/0672329468)
 - [ ] Add at least [1 feature](https://pages.cs.wisc.edu/~remzi/OSTEP/lab-projects-xv6.pdf) to xv6
 - [ ] Implement a [Toy Kernel in Rust](https://os.phil-opp.com)
@@ -78,7 +76,6 @@ I've had this GitHub account for over a decade. I hope within the next decade to
 ## Computer Networking
 ### Core
 - [ ] Read and do exercises in [Computer Networking: A Top Down Approach](https://smile.amazon.com/Computer-Networking-Top-Down-Approach-7th/dp/0133594149/)
-### Extra
 - [ ] Beej's [Guide to Network Programming](https://beej.us/guide/bgnet/html/)
 - [ ] [Wireshark Labs](https://gaia.cs.umass.edu/kurose_ross/wireshark.php)
 - [ ] U of Washington's [networking lectures](https://www.youtube.com/watch?v=xKNPTYtTnAo&list=PLVEo1P9gAninM7KwP1KKolfMQdNs6P6Am)
