@@ -84,7 +84,6 @@ I've had this GitHub account for over a decade. I hope within the next decade to
 ### Core
 - [ ] CS 186 [video lectures](https://www.youtube.com/user/CS186Berkeley/videos)
 - [ ] [Architecture of Database Systems](http://db.cs.berkeley.edu/papers/fntdb07-architecture.pdf)
-- [ ] The [Red Book](http://www.redbook.io/)
 - [x] [Data and Reality](https://www.amazon.com/Data-Reality-Perspective-Perceiving-Information/dp/1935504215)
   - This was kind of a dud. It wasn't 'bad' per se - just that for anyone who's worked with a DB based information system a lot of this stuff is, or   should be, pretty obvious. 
 
