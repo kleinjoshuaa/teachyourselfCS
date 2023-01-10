@@ -29,7 +29,7 @@ I've had this GitHub account for over a decade. I hope within the next decade to
 - [ ] Van Steen's [book on distributed systems](https://www.amazon.com/gp/product/1543057381/ref=ox_sc_act_title_1?smid=ATVPDKIKX0DER&psc=1)
 - [ ] Read the Readings from [MIT 6.824](https://pdos.csail.mit.edu/6.824/schedule.html)
 - [ ] Read the [MIT Distributed System Reading Group Papers](http://dsrg.pdos.csail.mit.edu/papers/)
-- [ ] Read [conflict free CRDTs](https://jzhao.xyz/posts/bft-json-crdt/)
+- [x] Read [conflict free CRDTs](https://jzhao.xyz/posts/bft-json-crdt/)
 
 
 ## Programming
