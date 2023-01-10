@@ -26,7 +26,6 @@ I've had this GitHub account for over a decade. I hope within the next decade to
  - I'll want to revisit Chapter 9-12 at some point later. This book is what got me started on this quest to fill in the gaps I missed by not having a CS degree
 
 ### Extra
-- [ ] Revisit Ch. 9-12 of Designing Data Intensive Systems
 - [ ] Van Steen's [book on distributed systems](https://www.amazon.com/gp/product/1543057381/ref=ox_sc_act_title_1?smid=ATVPDKIKX0DER&psc=1)
 - [ ] Read the Readings from [MIT 6.824](https://pdos.csail.mit.edu/6.824/schedule.html)
 - [ ] Read the [MIT Distributed System Reading Group Papers](http://dsrg.pdos.csail.mit.edu/papers/)
