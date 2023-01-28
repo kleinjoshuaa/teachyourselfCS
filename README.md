@@ -79,7 +79,8 @@ I've had this GitHub account for over a decade. I hope within the next decade to
 ## Databases
 ### Core
 - [ ] CS 186 [video lectures](https://www.youtube.com/user/CS186Berkeley/videos)
-- [ ] [Architecture of Database Systems](http://db.cs.berkeley.edu/papers/fntdb07-architecture.pdf)
+- [x] [Architecture of Database Systems](http://db.cs.berkeley.edu/papers/fntdb07-architecture.pdf)
+   - an alright read. Pretty good about some things - I guess it didn't "wow" me as much as some of the other things
 - [x] [Data and Reality](https://www.amazon.com/Data-Reality-Perspective-Perceiving-Information/dp/1935504215)
   - This was kind of a dud. It wasn't 'bad' per se - just that for anyone who's worked with a DB based information system a lot of this stuff is, or   should be, pretty obvious. 
 
