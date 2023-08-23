@@ -65,7 +65,7 @@ I've had this GitHub account for over a decade. I hope within the next decade to
 
 ## Operating Systems
 ### Core
-- [ ] Read [Operating Systems: Three Easy Pieces](http://pages.cs.wisc.edu/~remzi/OSTEP/)
+- [ ] Read and do the exercises for [Operating Systems: Three Easy Pieces](http://pages.cs.wisc.edu/~remzi/OSTEP/)
 - [ ] Read Robert Love's [Linux Kernel Development](https://www.amazon.com/Linux-Kernel-Development-Robert-Love/dp/0672329468)
 
 
