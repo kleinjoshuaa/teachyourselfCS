@@ -234,10 +234,6 @@
 ## 2.60
 ````scheme
 ; sets with duplicates
-
-
-
-     
   
 ; this is the same
 (define (element-of-set-dupes? x set)
