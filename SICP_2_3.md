@@ -258,3 +258,58 @@
   (append set1 set2)
   )
 ````
+
+## 2.61 - create adjoin set using ordered representation
+
+````scheme
+
+(define (list-ref items n)
+  (if (= n 0)
+      (car items)
+      (list-ref (cdr items) (- n 1))))
+
+(define (element-of-set-ordered? x set)
+  (cond ((null? set) false)
+        ((= x (car set)) true)
+        ((< x (car set)) false)
+        (else (element-of-set? x (cdr set)))))
+
+(define (intersection-set-ordered set1 set2)
+  (if (or (null? set1) (null? set2))
+      '()    
+      (let ((x1 (car set1)) (x2 (car set2)))
+        (cond ((= x1 x2)
+               (cons x1
+                     (intersection-set-ordered (cdr set1)
+                                       (cdr set2))))
+              ((< x1 x2)
+               (intersection-set-ordered (cdr set1) set2))
+              ((< x2 x1)
+               (intersection-set-ordered set1 (cdr set2)))))))
+
+(define (reverse l)
+    (define (rev newList n)
+      (if (= (length l) n)
+          newList
+        (rev  (cons (list-ref l n) newList) (+ n 1)))
+  )
+  (rev (list) 0)
+  )
+
+(define (adjoin-set-ordered x set)
+  (define (ad-s-o x set l)
+    (cond ((null? set)
+           (list x set))
+          ((> (car set) x)
+           (cons x set))
+           )
+        ((and (< (car set) x) (> (cadr set) x))
+           (cons x (append l set)))
+        (else (ad-s-o x (cdr set) (cons (car set) l)))
+    )
+    )
+  (if (element-of-set-ordered? x set)
+      set
+      (ad-s-o x set (list))
+      )
+````
