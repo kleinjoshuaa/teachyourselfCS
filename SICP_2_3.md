@@ -138,3 +138,125 @@
                         (caddr p))            
   )
 ````
+
+## 2.58
+
+;a.Yes - these procedures need to be modified:
+;(define (sum? x)
+;  (and (pair? x) (eq? (cadr x) '+)))
+;
+;(define (product? x)
+;  (and (pair? x) (eq? (cadr x) '*)))
+;
+;(define (addend s) (car s))
+;
+;(define (multiplier s) (car s))
+;
+;b. I tried a few different things before eventually looking up how other people were solving the same problem.
+; My attempted solution was to somehow find and break up the algebraic notation and then run deriv on each component part recursively.
+; The problem with this is that the deriv function does not recurse on both sides of the operator, just on the multiplicand and aguend sides. As such this solution was unworkable without changes to the deriv function
+; Looking up answers to what other people had done it seems I was missing the key introduced concept, `memq` that would help resolve some of the challenges that had me building this on my own. This is the answer from meteorgan on the scip community wiki which I believe is what was expected to be used as the answer
+
+ (define (operation expr) 
+   (if (memq '+ expr) 
+       '+ 
+       '*))
+
+ (define (sum? expr) 
+   (eq? '+ (operation expr)))
+
+ (define (addend expr) 
+   (define (iter expr result) 
+         (if (eq? (car expr) '+) 
+           result 
+           (iter (cdr expr) (append result (list (car expr)))))) 
+   (let ((result (iter expr '()))) 
+     (if (= (length result) 1) 
+         (car result) 
+         result)))
+
+(define (augend expr) 
+   (let ((result (cdr (memq '+ expr)))) 
+     (if (= (length result) 1) 
+         (car result) 
+         result))) 
+  
+ (define (product? expr) 
+   (eq? '* (operation expr))) 
+ (define (multiplier expr) 
+   (define (iter expr result) 
+         (if (eq? (car expr) '*) 
+           result 
+           (iter (cdr expr) (append result (list (car expr)))))) 
+   (let ((result (iter expr '()))) 
+     (if (= (length result) 1) 
+         (car result) 
+         result))) 
+ (define (multiplicand expr) 
+   (let ((result (cdr (memq '* expr)))) 
+     (if (= (length result) 1) 
+         (car result) 
+         result))) 
+
+## 2.59
+
+(define (element-of-set? x set)
+  (cond ((null? set) false)
+        ((equal? x (car set)) true)
+        (else (element-of-set? x (cdr set)))))
+
+
+(define (adjoin-set x set)
+  (if (element-of-set? x set)
+      set
+      (cons x set)))
+
+
+(define (intersection-set set1 set2)
+  (cond ((or (null? set1) (null? set2)) '())
+        ((element-of-set? (car set1) set2)        
+         (cons (car set1)
+               (intersection-set (cdr set1) set2)))
+        (else (intersection-set (cdr set1) set2))))
+
+; ## 2.59
+
+(define (union-set set1 set2)
+  (cond 
+        ((null? set1) set2)
+        ((not (element-of-set? (car set1) set2))
+         (union-set (cdr set1) (cons (car set1) set2)))
+        (else
+         (union-set (cdr set1) set2)
+        )
+  )
+  )
+## 2.60
+; sets with duplicates
+
+
+
+     
+  
+; this is the same
+(define (element-of-set-dupes? x set)
+  (cond ((null? set) false)
+        ((equal? x (car set)) true)
+        (else (element-of-set? x (cdr set)))))
+
+; just adding to the set
+(define (adjoin-set-dupes x set)
+  (cons x set))
+
+; can't really be improved
+(define (intersection-set-dupes set1 set2)
+  (cond ((or (null? set1) (null? set2)) '())
+        ((element-of-set? (car set1) set2)        
+         (cons (car set1)
+               (intersection-set (cdr set1) set2)))
+        (else (intersection-set (cdr set1) set2))))
+
+; trivial
+(define (union-set-dupes set1 set2)
+  (append set1 set2)
+  )
