@@ -140,7 +140,7 @@
 ````
 
 ## 2.58
-
+```scheme
 ;a.Yes - these procedures need to be modified:
 ;(define (sum? x)
 ;  (and (pair? x) (eq? (cadr x) '+)))
@@ -197,9 +197,9 @@
      (if (= (length result) 1) 
          (car result) 
          result))) 
-
+```
 ## 2.59
-
+```scheme
 (define (element-of-set? x set)
   (cond ((null? set) false)
         ((equal? x (car set)) true)
@@ -219,7 +219,6 @@
                (intersection-set (cdr set1) set2)))
         (else (intersection-set (cdr set1) set2))))
 
-; ## 2.59
 
 (define (union-set set1 set2)
   (cond 
@@ -231,7 +230,9 @@
         )
   )
   )
+```
 ## 2.60
+```scheme
 ; sets with duplicates
 
 
@@ -255,6 +256,7 @@
          (cons (car set1)
                (intersection-set (cdr set1) set2)))
         (else (intersection-set (cdr set1) set2))))
+```
 
 ; trivial
 (define (union-set-dupes set1 set2)
