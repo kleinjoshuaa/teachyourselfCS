@@ -313,3 +313,56 @@
       (ad-s-o x set (list))
       )
 ````
+
+## 2.62 - union set
+
+````scheme
+(define (union-seto set1 set2)
+  (cond 
+        ((null? set1) set2)
+        ((null? set2) set1)
+        (else
+      (let ((x1 (car set1)) (x2 (car set2)))
+        (cond ((= x1 x2)
+               (cons x1
+                     (union-seto (cdr set1)
+                                       (cdr set2))))
+              ((< x1 x2)
+               (cons x1 (union-seto (cdr set1)  set2)))
+              ((< x2 x1)
+               (cons x2 (union-seto  set1 (cdr set2)))))))))
+````
+
+## 2.63
+````scheme
+; 2.63 - yes they produce the same result for each tree
+;a answers for the trees from 2.16
+;(tree->list-1 '(7 (3 (1 () ()) (5 () ())) (9 () (11 () () ))))
+;(tree->list-2 '(7 (3 (1 () ()) (5 () ())) (9 () (11 () () ))))
+
+;(tree->list-1 '(3 (1 () ()) (7 (5 () ()) (9 () (11 () ()) ))))
+;(tree->list-2 '(3 (1 () ()) (7 (5 () ()) (9 () (11 () ()) ))))
+
+;(tree->list-1 '(5 (3 (1 () ()) ()) (9 (7 () ()) (11 () ()))))
+;(tree->list-2 '(5 (3 (1 () ()) ()) (9 (7 () ()) (11 () ()))))
+
+; they all produce (1 3 5 7 9 11)
+````
+
+## 2.64
+````scheme
+
+;a. partial tree takes in the number of elements left and the list of actual elements themselves
+; and divides by 2 and then makes the left and right trees for that part of the graph using the `make-tree` method.
+; essentially we are building a tree recursively by building the left and right trees and then when there are no remaining elements it will return
+
+; 
+;5
+;├── 1
+;│   └── 3
+;└── 9
+;    ├── 7
+;    └── 11
+;b. order of growth is O(n) - we only visit each element of the tree once
+
+````
