@@ -366,3 +366,24 @@
 ;b. order of growth is O(n) - we only visit each element of the tree once
 
 ````
+## 2.65
+
+````scheme
+(define (union-set-tree set1 set2)
+ (tree->list-1 (union-seto (list->tree set1) (list->tree set2)))
+
+(define (intersection-set-tree set1 set2)
+ (tree->list-1 (intersection-set (list->tree set1) (list->tree set2)))
+````
+
+
+## 2.66
+````scheme
+(define (lookup given-key set-of-records)
+  (cond ((null? set-of-records) false)
+        ((= given-key (key (entry set-of-records)) (entry set-of-records)))
+        ((< given-key (key (entry set-of-records)))
+         (lookup given-key (left-branch set-of-records)))
+        ((> given-key (entry set-of-records))
+         (lookup given-key (right-branch set-of-records)))))
+````
