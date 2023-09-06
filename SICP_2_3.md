@@ -370,10 +370,10 @@
 
 ````scheme
 (define (union-set-tree set1 set2)
- (tree->list-1 (union-seto (list->tree set1) (list->tree set2)))
+ (list->tree (union-seto (tree->list-1 set1) (tree->list-1 set2))))
 
 (define (intersection-set-tree set1 set2)
- (tree->list-1 (intersection-set (list->tree set1) (list->tree set2)))
+ (list->tree (intersection-set (tree->list-1 set1) (tree->list-1 set2))))
 ````
 
 
