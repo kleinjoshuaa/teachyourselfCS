@@ -388,3 +388,118 @@
          (lookup given-key (right-branch set-of-records)))))
 
 ````
+
+## 2.67
+````scheme
+(define sample-message '(0 1 1 0 0 1 0 1 0 1 1 1 0))
+
+(decode sample-message sample-tree)
+
+;Result: (ADABBCA)
+````
+
+## 2.68
+````scheme
+; encode-symbol gives the bits for a symbol given the tree
+(define (encode-symbol sym tree)
+(define (element-of-set? x set)
+  (cond ((null? set) false)
+        ((equal? x (car set)) true)
+        (else (element-of-set? x (cdr set)))))
+  (define (sym-search sym tree path)
+    (cond ((and (leaf? tree) (equal? (symbol-leaf tree) sym))
+           (reverse path))
+          ( (element-of-set? sym (symbols (left-branch tree)))
+            (sym-search sym (left-branch tree) (cons 0 path) ))
+          ( (element-of-set? sym (symbols (right-branch tree)))
+            (sym-search sym (right-branch tree) (cons 1 path)))
+          ( else (error "no symbol found in match" tree)))
+    )
+(sym-search sym tree '()))
+````
+
+## 2.69
+
+````scheme
+
+(define (successive-merge pairs)
+    (if (not (pair? (cddr pairs)))
+           (make-code-tree (car pairs) (car (cdr pairs)))
+            (make-code-tree (car pairs) (successive-merge (cdr pairs))))
+  )
+````
+  
+## 2.70
+
+````scheme
+; 2.70
+(define fifties-tree (generate-huffman-tree '((NA 16) (YIP 9) (SHA 3) (A 2) (GET 2) (JOB 2) (BOOM 1) (WAH 1))))
+(define fifties-message '(GET A JOB SHA NA NA NA NA NA NA NA NA GET A JOB SHA NA NA NA NA NA NA NA NA WAH YIP YIP YIP YIP YIP YIP YIP YIP YIP SHA BOOM))
+
+(encode fifties-message fifties-tree)
+
+;(1 1 1 1 0 1 1 1 0 1 1 1 1 1 0 1 1 0 0 0 0 0 0 0 0 0 1 1 1 1 0 1 1 1 0 1 1 1 1 1 0 1 1 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 0 1 1 0 1 1 1 1 1 1  0)
+
+;87 bits
+
+; Using a fixed length encoding for the 9 symbol alphabet would require 4 bits per symbol - as 2^3 is 8 and therefore with 3 characters we could
+; only handle 8 symbols. With 2^4 we can handle up to 16 symbols. Then 4 bits * 36 symbols =  144 bits
+````
+
+## 2.71
+````scheme
+; draw a huffman tree for n=5, and n=10
+;  n=5             (START)
+;                   /   \
+;              16 (5)   15 (4 3 2 1)
+;                          /  \
+;                       8(4)  7 (3 2 1)
+;                               /   \
+;                            4 (3)  3 (2 1)
+;                                     / \
+;                                   2(2)  1(1)
+
+; n=10
+;
+;((leaf nine 256)
+; ((leaf eight 128)
+;  ((leaf seven 64)
+;   ((leaf six 32)
+;    ((leaf five 16)
+;     ((leaf four 8) ((leaf three 4) ((leaf two 2) (leaf one 1) (two one) 3) (three two one) 7) (four three two one) 15)
+;     (five four three two one)
+;     31)
+;    (six five four three two one)
+;    63)
+;   (seven six five four three two one)
+;   127)
+;  (eight seven six five four three two one)
+;  255)
+; (nine eight seven six five four three two one)
+; 511)
+;
+; The most frequent symbol will always need 1 bit, the least frequent symbol will need n-1 bits
+````
+
+## 2.72
+
+````scheme
+; What is the order of growth in the number of steps needed to encode a symbol
+; for the 2^n-1 trees that we've worked on - the most frequent symbol is always 1 step O(1)
+; The least common symbol it has to search (for example of 1,2..2^5 finding 1)
+; 4-3-2-1
+; 3-2-1
+; 2-1
+; 1  -> 10 steps
+; if you add another branch
+
+; 5-4-3-2-1
+; 4-3-2-1
+; ...
+; > 15 steps
+; another step
+; 6-5-4-3-2-1
+; 21
+; each additional element added to the tree is an additional n+1 steps.
+; This is a triangular number, so it's O(n^2) (formula for triangular numbers is 1/2 (n^2+n)
+````
