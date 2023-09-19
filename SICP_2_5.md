@@ -95,3 +95,65 @@ This works because it allows the real/imag/mag/and angle functions to be defined
   (put '=zero? '(complex)
        (lambda (z1)  (=zero? z1)))
 ````
+
+## 2.81
+````scheme
+
+a. the code goes into an infinite loop
+
+b. Yes - it works as is.
+
+c. 
+(define (apply-generic op . args)
+  (let ((type-tags (map type-tag args)))
+    (let ((proc (get op type-tags)))
+      (if proc
+          (apply proc (map contents args))
+          (if (= (length args) 2)
+              (let ((type1 (car type-tags))
+                    (type2 (cadr type-tags))
+                    (a1 (car args))
+                    (a2 (cadr args)))
+                (cond ((eq? type1 type2)
+                     ( error "No method for this type" type1))
+                      (else
+                (let ((t1->t2 (get-coercion type1 type2))
+                      (t2->t1 (get-coercion type2 type1)))
+                  (cond (t1->t2
+                         (apply-generic op (t1->t2 a1) a2))
+                        (t2->t1
+                         (apply-generic op a1 (t2->t1 a2)))
+                        (else
+                         (error "No method for these types"
+                                (list op type-tags))))))))
+              (error "No method for these types"
+                     (list op type-tags)))))))
+````
+
+## 2.82
+````scheme
+(define (apply-generic op . args)
+  (let ((type-tags (map type-tag args)))
+    (let ((proc (get op type-tags)))
+      (if proc
+          (apply proc (map contents args))
+          (if (= (length args) 2)
+              (let ((type1 (car type-tags))
+                    (type2 (cadr type-tags))
+                    (a1 (car args))
+                    (a2 (cadr args)))
+                (cond ((eq? type1 type2)
+                     ( error "No method for this type" type1))
+                      (else
+                (let ((t1->t2 (get-coercion type1 type2))
+                      (t2->t1 (get-coercion type2 type1)))
+                  (cond (t1->t2
+                         (apply-generic op (t1->t2 a1) a2))
+                        (t2->t1
+                         (apply-generic op a1 (t2->t1 a2)))
+                        (else
+                         (error "No method for these types"
+                                (list op type-tags))))))))
+              (error "No method for these types"
+                     (list op type-tags)))))))
+````
