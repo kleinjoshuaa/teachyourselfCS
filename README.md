@@ -39,7 +39,8 @@ I've had this GitHub account for over a decade. I hope within the next decade to
   - [Exercises - Chapter 2.1](SICP_2_1.md)
   - [Exercises - Chapter 2.2](SICP_2_2.md)
   - [Exercises - Chapter 2.3](SICP_2_3.md)
-
+  - [Exercises - Chapter 2.4](SICP_2_4.md)
+  - [Exercises - Chapter 2.5](SICP_2_5.md)
 
 
 ## Computer Architecture
