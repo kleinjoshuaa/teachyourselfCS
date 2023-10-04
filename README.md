@@ -66,13 +66,15 @@ I've had this GitHub account for over a decade. I hope within the next decade to
 
 ## Operating Systems
 ### Core
-- [ ] Read and do the exercises for [Operating Systems: Three Easy Pieces](http://pages.cs.wisc.edu/~remzi/OSTEP/)
+- [ ] Read  [Operating Systems: Three Easy Pieces](http://pages.cs.wisc.edu/~remzi/OSTEP/)
+- [ ]  Do the Exercises in OSTEP
 - [ ] Read Robert Love's [Linux Kernel Development](https://www.amazon.com/Linux-Kernel-Development-Robert-Love/dp/0672329468)
 
 
 ## Computer Networking
 ### Core
-- [ ] Read and do exercises in [Computer Networking: A Top Down Approach](https://smile.amazon.com/Computer-Networking-Top-Down-Approach-7th/dp/0133594149/)
+- [ ] Read and [Computer Networking: A Top Down Approach](https://smile.amazon.com/Computer-Networking-Top-Down-Approach-7th/dp/0133594149/)
+- [ ] Do the exercises in CNATDA
 - [ ] Beej's [Guide to Network Programming](https://beej.us/guide/bgnet/html/)
 - [ ] [Wireshark Labs](https://gaia.cs.umass.edu/kurose_ross/wireshark.php)
 
@@ -88,7 +90,8 @@ I've had this GitHub account for over a decade. I hope within the next decade to
 
 ## Languages and Compilers
 ### Core
-- [ ] Read Nystrom's [Crafting Interpreters](https://craftinginterpreters.com/contents.html) and do at least 2 challenges per chapter
+- [ ] Read Nystrom's [Crafting Interpreters](https://craftinginterpreters.com/contents.html)
+- [ ] Do 2 challenges per chapter
 - [x] Read Steve Yegge's [Rich Programmer Food](https://steve-yegge.blogspot.com/2007/06/rich-programmer-food.html)
 - [ ] Hefron's [Theory of Computation](https://hefferon.net/computation/index.html)
 
